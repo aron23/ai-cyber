@@ -1,0 +1,167 @@
+# SMS/Email Spam Filter Project - .gitignore
+# Created: 15/06/2025
+# Task: DE-001 Environment Setup
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+.ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+profile_default/
+ipython_config.py
+
+# IPython
+.ipython/
+
+# Data Files (exclude large datasets but keep structure)
+data/processed/
+data/cache/
+data/temp/
+data/raw/*.csv
+data/raw/*.json
+data/raw/*.parquet
+data/raw/*.pkl
+data/raw/*.h5
+data/backup/
+*.db
+*.sqlite
+*.sqlite3
+
+# Model Files (can be large)
+models/*.pkl
+models/*.joblib
+models/*.h5
+models/*.pb
+models/*.pth
+models/*.pt
+models/*.onnx
+models/checkpoints/
+models/cache/
+
+# Logs and Monitoring
+logs/
+*.log
+*.log.*
+log/
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+config.ini
+secrets.json
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Testing and Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# Documentation
+docs/_build/
+.readthedocs.yml
+site/
+
+# Profiling and Performance
+*.prof
+*.lprof
+.prof/
+
+# Temporary Files
+temp/
+tmp/
+*.tmp
+*.temp
+.temp/
+
+# Experiment Tracking
+mlruns/
+.mlflow/
+wandb/
+tensorboard_logs/
+experiments/
+
+# Package Management
+pip-log.txt
+pip-delete-this-directory.txt
+Pipfile.lock
+
+# Deployment
+.serverless/
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Miscellaneous
+.cache/
+.mypy_cache/
+.pyre/
+.pytype/
+*.bak
+*.orig
+
+# Project Specific
+# Keep example configurations but not actual config files
+config/local_*
+config/production_*
+config/staging_*
+
+# Keep empty directories with .gitkeep
+!.gitkeep
+
+# Keep README files in data directories
+!data/README.md
+!models/README.md 
