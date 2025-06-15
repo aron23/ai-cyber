@@ -14,3 +14,5 @@ as you proceed with your work generate notes in the notes directory detailing wh
 as you make decisions document them in the decisions directory detailing what you decided name each note <date time stamp>-<meaningful name>.md
 
 as you have questions or ambiguity create a clarification document in the clarification directory detailing what you need clarification on name each note <date time stamp>-<meaningful name>.md
+
+our venv is spam_filter_env
