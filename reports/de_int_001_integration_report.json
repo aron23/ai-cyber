@@ -1,0 +1,428 @@
+{
+  "test_metadata": {
+    "test_name": "DE-INT-001 Baseline Model Integration Testing",
+    "executed_at": "2025-06-15T18:44:22.371280",
+    "phase": "Phase 2: Integration Testing",
+    "engineer": "AI Data Engineer"
+  },
+  "integration_tests": {
+    "random_forest": {
+      "model_path": "../models/random_forest_baseline_v1.0.0.joblib",
+      "metadata": {
+        "model_id": "random_forest_baseline_v1.0.0",
+        "model_name": "random_forest",
+        "model_type": "RandomForestClassifier",
+        "version": "1.0.0",
+        "format": "joblib",
+        "file_path": "../models/random_forest_baseline_v1.0.0.joblib",
+        "file_size_mb": 0.47657108306884766,
+        "created_at": "2025-06-15T18:41:58.874034",
+        "training_time_seconds": 0.24631428718566895,
+        "memory_used_mb": 5.625,
+        "avg_inference_time_ms": 0.05666662061043334,
+        "validation_samples": 836,
+        "requires_vectorizer": "tfidf_vectorizer_v1.0.0"
+      },
+      "load_time_seconds": 0.14857172966003418,
+      "prediction_time_seconds": 0.029454946517944336,
+      "avg_prediction_time_ms": 1.9636631011962893,
+      "probability_time_seconds": 0.02860736846923828,
+      "total_messages_tested": 15,
+      "results_by_type": {
+        "ham_samples": {
+          "predictions": [
+            "ham",
+            "ham",
+            "ham",
+            "ham",
+            "ham"
+          ],
+          "spam_count": 0,
+          "ham_count": 5,
+          "messages": [
+            "Hey, are you free for dinner tonight?",
+            "Meeting at 3pm today. See you there!",
+            "Thanks for the help yesterday. Really appreciate it.",
+            "Can you pick up milk from the store?",
+            "Happy birthday! Hope you have a great day."
+          ]
+        },
+        "spam_samples": {
+          "predictions": [
+            "spam",
+            "spam",
+            "spam",
+            "ham",
+            "spam"
+          ],
+          "spam_count": 4,
+          "ham_count": 1,
+          "messages": [
+            "URGENT! Your mobile number has been selected to receive a \u00a31000 cash prize! Call now!",
+            "FREE iPhone! Click here to claim your prize now! Limited time offer!",
+            "Congratulations! You've won a \u00a3500 shopping voucher. Text WIN to 12345",
+            "STOP! Don't miss out on this amazing deal. Call 09876543210 now!",
+            "Win big! Play our lottery and win \u00a310000. Text PLAY to start now!"
+          ]
+        },
+        "edge_cases": {
+          "predictions": [
+            "ham",
+            "ham",
+            "ham",
+            "ham",
+            "ham"
+          ],
+          "spam_count": 0,
+          "ham_count": 5,
+          "messages": [
+            "",
+            "a",
+            "This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message ",
+            "123456789",
+            "!@#$%^&*()"
+          ]
+        }
+      },
+      "performance_checks": {
+        "load_time_ok": true,
+        "inference_time_ok": true,
+        "predictions_valid": true,
+        "no_errors": true
+      },
+      "integration_successful": true,
+      "tested_at": "2025-06-15T18:44:22.306227"
+    },
+    "naive_bayes": {
+      "model_path": "../models/naive_bayes_baseline_v1.0.0.joblib",
+      "metadata": {
+        "model_id": "naive_bayes_baseline_v1.0.0",
+        "model_name": "naive_bayes",
+        "model_type": "MultinomialNB",
+        "version": "1.0.0",
+        "format": "joblib",
+        "file_path": "../models/naive_bayes_baseline_v1.0.0.joblib",
+        "file_size_mb": 0.15335750579833984,
+        "created_at": "2025-06-15T18:41:58.842621",
+        "training_time_seconds": 0.005868196487426758,
+        "memory_used_mb": 0.125,
+        "avg_inference_time_ms": 0.0002455483212995757,
+        "validation_samples": 836,
+        "requires_vectorizer": "tfidf_vectorizer_v1.0.0"
+      },
+      "load_time_seconds": 0.003359556198120117,
+      "prediction_time_seconds": 0.0008113384246826172,
+      "avg_prediction_time_ms": 0.054089228312174484,
+      "probability_time_seconds": 0.0009224414825439453,
+      "total_messages_tested": 15,
+      "results_by_type": {
+        "ham_samples": {
+          "predictions": [
+            "ham",
+            "ham",
+            "ham",
+            "ham",
+            "ham"
+          ],
+          "spam_count": 0,
+          "ham_count": 5,
+          "messages": [
+            "Hey, are you free for dinner tonight?",
+            "Meeting at 3pm today. See you there!",
+            "Thanks for the help yesterday. Really appreciate it.",
+            "Can you pick up milk from the store?",
+            "Happy birthday! Hope you have a great day."
+          ]
+        },
+        "spam_samples": {
+          "predictions": [
+            "spam",
+            "spam",
+            "spam",
+            "ham",
+            "ham"
+          ],
+          "spam_count": 3,
+          "ham_count": 2,
+          "messages": [
+            "URGENT! Your mobile number has been selected to receive a \u00a31000 cash prize! Call now!",
+            "FREE iPhone! Click here to claim your prize now! Limited time offer!",
+            "Congratulations! You've won a \u00a3500 shopping voucher. Text WIN to 12345",
+            "STOP! Don't miss out on this amazing deal. Call 09876543210 now!",
+            "Win big! Play our lottery and win \u00a310000. Text PLAY to start now!"
+          ]
+        },
+        "edge_cases": {
+          "predictions": [
+            "ham",
+            "ham",
+            "ham",
+            "ham",
+            "ham"
+          ],
+          "spam_count": 0,
+          "ham_count": 5,
+          "messages": [
+            "",
+            "a",
+            "This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message ",
+            "123456789",
+            "!@#$%^&*()"
+          ]
+        }
+      },
+      "performance_checks": {
+        "load_time_ok": true,
+        "inference_time_ok": true,
+        "predictions_valid": true,
+        "no_errors": true
+      },
+      "integration_successful": true,
+      "tested_at": "2025-06-15T18:44:22.312749"
+    },
+    "svm": {
+      "model_path": "../models/svm_baseline_v1.0.0.joblib",
+      "metadata": {
+        "model_id": "svm_baseline_v1.0.0",
+        "model_name": "svm",
+        "model_type": "LinearSVC",
+        "version": "1.0.0",
+        "format": "joblib",
+        "file_path": "../models/svm_baseline_v1.0.0.joblib",
+        "file_size_mb": 0.03899669647216797,
+        "created_at": "2025-06-15T18:41:58.843199",
+        "training_time_seconds": 0.015467166900634766,
+        "memory_used_mb": 0.375,
+        "avg_inference_time_ms": 0.00033395712455493984,
+        "validation_samples": 836,
+        "requires_vectorizer": "tfidf_vectorizer_v1.0.0"
+      },
+      "load_time_seconds": 0.0012269020080566406,
+      "prediction_time_seconds": 0.00014090538024902344,
+      "avg_prediction_time_ms": 0.009393692016601562,
+      "probability_time_seconds": 0.00011372566223144531,
+      "total_messages_tested": 15,
+      "results_by_type": {
+        "ham_samples": {
+          "predictions": [
+            "ham",
+            "ham",
+            "ham",
+            "ham",
+            "ham"
+          ],
+          "spam_count": 0,
+          "ham_count": 5,
+          "messages": [
+            "Hey, are you free for dinner tonight?",
+            "Meeting at 3pm today. See you there!",
+            "Thanks for the help yesterday. Really appreciate it.",
+            "Can you pick up milk from the store?",
+            "Happy birthday! Hope you have a great day."
+          ]
+        },
+        "spam_samples": {
+          "predictions": [
+            "spam",
+            "spam",
+            "spam",
+            "ham",
+            "spam"
+          ],
+          "spam_count": 4,
+          "ham_count": 1,
+          "messages": [
+            "URGENT! Your mobile number has been selected to receive a \u00a31000 cash prize! Call now!",
+            "FREE iPhone! Click here to claim your prize now! Limited time offer!",
+            "Congratulations! You've won a \u00a3500 shopping voucher. Text WIN to 12345",
+            "STOP! Don't miss out on this amazing deal. Call 09876543210 now!",
+            "Win big! Play our lottery and win \u00a310000. Text PLAY to start now!"
+          ]
+        },
+        "edge_cases": {
+          "predictions": [
+            "ham",
+            "ham",
+            "ham",
+            "ham",
+            "ham"
+          ],
+          "spam_count": 0,
+          "ham_count": 5,
+          "messages": [
+            "",
+            "a",
+            "This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message ",
+            "123456789",
+            "!@#$%^&*()"
+          ]
+        }
+      },
+      "performance_checks": {
+        "load_time_ok": true,
+        "inference_time_ok": true,
+        "predictions_valid": true,
+        "no_errors": true
+      },
+      "integration_successful": true,
+      "tested_at": "2025-06-15T18:44:22.315359"
+    },
+    "logistic_regression": {
+      "model_path": "../models/logistic_regression_baseline_v1.0.0.joblib",
+      "metadata": {
+        "model_id": "logistic_regression_baseline_v1.0.0",
+        "model_name": "logistic_regression",
+        "model_type": "LogisticRegression",
+        "version": "1.0.0",
+        "format": "joblib",
+        "file_path": "../models/logistic_regression_baseline_v1.0.0.joblib",
+        "file_size_mb": 0.03913402557373047,
+        "created_at": "2025-06-15T18:41:58.843887",
+        "training_time_seconds": 0.007333278656005859,
+        "memory_used_mb": 0.0,
+        "avg_inference_time_ms": 0.00026494122007817176,
+        "validation_samples": 836,
+        "requires_vectorizer": "tfidf_vectorizer_v1.0.0"
+      },
+      "load_time_seconds": 0.0011477470397949219,
+      "prediction_time_seconds": 0.0001239776611328125,
+      "avg_prediction_time_ms": 0.008265177408854166,
+      "probability_time_seconds": 0.00012683868408203125,
+      "total_messages_tested": 15,
+      "results_by_type": {
+        "ham_samples": {
+          "predictions": [
+            "ham",
+            "ham",
+            "ham",
+            "ham",
+            "ham"
+          ],
+          "spam_count": 0,
+          "ham_count": 5,
+          "messages": [
+            "Hey, are you free for dinner tonight?",
+            "Meeting at 3pm today. See you there!",
+            "Thanks for the help yesterday. Really appreciate it.",
+            "Can you pick up milk from the store?",
+            "Happy birthday! Hope you have a great day."
+          ]
+        },
+        "spam_samples": {
+          "predictions": [
+            "spam",
+            "spam",
+            "spam",
+            "ham",
+            "spam"
+          ],
+          "spam_count": 4,
+          "ham_count": 1,
+          "messages": [
+            "URGENT! Your mobile number has been selected to receive a \u00a31000 cash prize! Call now!",
+            "FREE iPhone! Click here to claim your prize now! Limited time offer!",
+            "Congratulations! You've won a \u00a3500 shopping voucher. Text WIN to 12345",
+            "STOP! Don't miss out on this amazing deal. Call 09876543210 now!",
+            "Win big! Play our lottery and win \u00a310000. Text PLAY to start now!"
+          ]
+        },
+        "edge_cases": {
+          "predictions": [
+            "ham",
+            "ham",
+            "ham",
+            "ham",
+            "ham"
+          ],
+          "spam_count": 0,
+          "ham_count": 5,
+          "messages": [
+            "",
+            "a",
+            "This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message This is a very long message ",
+            "123456789",
+            "!@#$%^&*()"
+          ]
+        }
+      },
+      "performance_checks": {
+        "load_time_ok": true,
+        "inference_time_ok": true,
+        "predictions_valid": true,
+        "no_errors": true
+      },
+      "integration_successful": true,
+      "tested_at": "2025-06-15T18:44:22.317794"
+    }
+  },
+  "batch_processing_tests": {
+    "random_forest": {
+      "batch_size": 110,
+      "batch_time_seconds": 0.02786707878112793,
+      "throughput_msg_per_sec": 3947.310045087823,
+      "avg_time_per_message_ms": 0.25333707982843573,
+      "spam_predictions": 0,
+      "ham_predictions": 110,
+      "batch_successful": true
+    },
+    "naive_bayes": {
+      "batch_size": 110,
+      "batch_time_seconds": 0.00025081634521484375,
+      "throughput_msg_per_sec": 438567.9087452472,
+      "avg_time_per_message_ms": 0.002280148592862216,
+      "spam_predictions": 1,
+      "ham_predictions": 109,
+      "batch_successful": true
+    },
+    "svm": {
+      "batch_size": 110,
+      "batch_time_seconds": 0.0001785755157470703,
+      "throughput_msg_per_sec": 615985.9012016022,
+      "avg_time_per_message_ms": 0.0016234137795188212,
+      "spam_predictions": 10,
+      "ham_predictions": 100,
+      "batch_successful": true
+    },
+    "logistic_regression": {
+      "batch_size": 110,
+      "batch_time_seconds": 0.0001461505889892578,
+      "throughput_msg_per_sec": 752648.352365416,
+      "avg_time_per_message_ms": 0.0013286417180841618,
+      "spam_predictions": 13,
+      "ham_predictions": 97,
+      "batch_successful": true
+    }
+  },
+  "summary": {
+    "total_models_tested": 4,
+    "successful_integrations": 4,
+    "failed_integrations": 0,
+    "all_models_successful": true
+  },
+  "performance_summary": {
+    "random_forest": {
+      "avg_inference_time_ms": 1.9636631011962893,
+      "load_time_seconds": 0.14857172966003418,
+      "meets_50ms_target": true,
+      "meets_load_target": true
+    },
+    "naive_bayes": {
+      "avg_inference_time_ms": 0.054089228312174484,
+      "load_time_seconds": 0.003359556198120117,
+      "meets_50ms_target": true,
+      "meets_load_target": true
+    },
+    "svm": {
+      "avg_inference_time_ms": 0.009393692016601562,
+      "load_time_seconds": 0.0012269020080566406,
+      "meets_50ms_target": true,
+      "meets_load_target": true
+    },
+    "logistic_regression": {
+      "avg_inference_time_ms": 0.008265177408854166,
+      "load_time_seconds": 0.0011477470397949219,
+      "meets_50ms_target": true,
+      "meets_load_target": true
+    }
+  }
+}

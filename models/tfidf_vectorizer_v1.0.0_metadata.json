@@ -1,0 +1,15 @@
+{
+  "component": "tfidf_vectorizer",
+  "version": "1.0.0",
+  "config": {
+    "max_features": 5000,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "min_df": 2,
+    "max_df": 0.95
+  },
+  "created_at": "2025-06-15T18:41:58.839873",
+  "feature_count": 5000
+}

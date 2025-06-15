@@ -1,0 +1,15 @@
+{
+  "model_id": "random_forest_baseline_v1.0.0",
+  "model_name": "random_forest",
+  "model_type": "RandomForestClassifier",
+  "version": "1.0.0",
+  "format": "joblib",
+  "file_path": "../models/random_forest_baseline_v1.0.0.joblib",
+  "file_size_mb": 0.47657108306884766,
+  "created_at": "2025-06-15T18:41:58.874034",
+  "training_time_seconds": 0.24631428718566895,
+  "memory_used_mb": 5.625,
+  "avg_inference_time_ms": 0.05666662061043334,
+  "validation_samples": 836,
+  "requires_vectorizer": "tfidf_vectorizer_v1.0.0"
+}

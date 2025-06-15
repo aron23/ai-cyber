@@ -1,0 +1,15 @@
+{
+  "model_id": "svm_baseline_v1.0.0",
+  "model_name": "svm",
+  "model_type": "LinearSVC",
+  "version": "1.0.0",
+  "format": "joblib",
+  "file_path": "../models/svm_baseline_v1.0.0.joblib",
+  "file_size_mb": 0.03899669647216797,
+  "created_at": "2025-06-15T18:41:58.843199",
+  "training_time_seconds": 0.015467166900634766,
+  "memory_used_mb": 0.375,
+  "avg_inference_time_ms": 0.00033395712455493984,
+  "validation_samples": 836,
+  "requires_vectorizer": "tfidf_vectorizer_v1.0.0"
+}
