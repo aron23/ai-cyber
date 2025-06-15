@@ -3,12 +3,12 @@
 # Generated: 15/06/2025
 
 # Core Data Processing
-pandas==2.2.2
-numpy==1.26.4
-scipy==1.13.1
+pandas>=2.3.0
+numpy>=2.3.0
+scipy>=1.13.0
 
 # Machine Learning
-scikit-learn==1.5.0
+scikit-learn>=1.7.0
 nltk==3.8.1
 textblob==0.17.1
 
@@ -26,16 +26,16 @@ feature-engine==1.7.0
 category-encoders==2.6.3
 
 # Data Visualization & Analysis
-matplotlib==3.9.0
-seaborn==0.13.2
+matplotlib>=3.10.0
+seaborn>=0.13.0
 plotly==5.22.0
-wordcloud==1.9.3
+wordcloud>=1.9.0
 
 # Jupyter Environment
-jupyter==1.0.0
+jupyter>=1.1.0
 jupyter-lab==4.2.2
 ipykernel==6.29.4
-notebook==7.2.1
+notebook>=7.0.0
 
 # Development & Testing
 pytest==8.2.2
@@ -80,4 +80,7 @@ pathlib==1.0.1
 
 # Documentation
 sphinx==7.3.7
-mkdocs==1.6.0 
+mkdocs==1.6.0
+
+# Additional pinned versions
+ipython>=8.0.0 
