@@ -56,6 +56,16 @@ data/backup/
 *.sqlite
 *.sqlite3
 
+# Feature Files (can be large)
+data/features/*.npy
+data/features/*.npz
+data/features/*_features*.npy
+data/features/*_features*.npz
+data/clean/features/*.npy
+data/clean/features/*.npz
+data/clean/features/*_features*.npy
+data/clean/features/*_features*.npz
+
 # Model Files (can be large)
 models/*.pkl
 models/*.joblib
@@ -66,6 +76,16 @@ models/*.pt
 models/*.onnx
 models/checkpoints/
 models/cache/
+models/day*/
+models/day*/*.joblib
+models/day*/*.pkl
+models/day*/*.pth
+models/day*/*.h5
+models/neural_network_v*.pth
+models/best_*.pkl
+ensemble_models/
+ensemble_models/*.joblib
+ensemble_models/*.pkl
 
 # Logs and Monitoring
 logs/
@@ -165,3 +185,8 @@ config/staging_*
 # Keep README files in data directories
 !data/README.md
 !models/README.md 
+# Large Feature Files (numpy arrays)
+data/features/*.npy
+data/features/*_features*.npy
+data/clean/features/*.npy
+data/clean/features/*_features*.npy
