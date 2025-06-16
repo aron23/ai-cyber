@@ -456,7 +456,7 @@ class SpamFilterTrainer:
             'epochs': 100,
             'learning_rate': 0.001,
             'weight_decay': 1e-4,
-            'patience': 15
+            'patience': 90
         }
         
         # Cross-validation to find best architecture
