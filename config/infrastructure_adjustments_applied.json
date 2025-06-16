@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "created": "2025-06-16T11:14:50.664983",
+    "purpose": "Priority 2 Infrastructure Adjustments Applied",
+    "source_config": "realistic_infrastructure_config.json",
+    "target": "Existing serving infrastructure adjustment"
+  },
+  "serving_adjustments": {
+    "model_configs": {
+      "lightgbm": {
+        "expected_performance": 0.78,
+        "confidence_threshold": 0.65,
+        "type": "sklearn"
+      },
+      "xgboost": {
+        "expected_performance": 0.75,
+        "confidence_threshold": 0.65,
+        "type": "sklearn"
+      }
+    },
+    "health_thresholds": {
+      "healthy_error_rate": 0.08,
+      "degraded_error_rate": 0.15,
+      "critical_error_rate": 0.25
+    },
+    "ensemble_thresholds": {
+      "high_agreement": 0.7,
+      "moderate_agreement": 0.6,
+      "low_agreement": 0.5
+    },
+    "performance_targets": {
+      "target_inference_ms": 100.0,
+      "acceptable_inference_ms": 200.0,
+      "slow_warning_ms": 500.0
+    }
+  },
+  "monitoring_dashboard": {
+    "performance_ranges": {
+      "excellent": ">= 88.0%",
+      "good": "85.0% - 87.0%",
+      "acceptable": "78.0% - 84.0%",
+      "below_baseline": "< 78.0%"
+    },
+    "alert_thresholds": {
+      "f1_score_critical": 0.73,
+      "f1_score_warning": 0.78,
+      "confidence_warning": 0.65,
+      "error_rate_warning": 0.08,
+      "agreement_warning": 0.7
+    },
+    "performance_expectations": {
+      "realistic_range": "75.0% - 90.0%",
+      "baseline_target": "78.0%",
+      "research_integrity": "Verified clean data with zero leakage"
+    }
+  },
+  "deployment_ready": true,
+  "research_integrity_compliant": true
+}

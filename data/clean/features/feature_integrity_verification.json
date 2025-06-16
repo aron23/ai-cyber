@@ -1,0 +1,27 @@
+{
+  "feature_integrity_status": "RESEARCH_INTEGRITY_CONFIRMED",
+  "zero_leakage_feature_extraction": "PASS",
+  "clean_feature_shapes": {
+    "train": [
+      3095,
+      4283
+    ],
+    "val": [
+      1032,
+      4283
+    ],
+    "test": [
+      1032,
+      4283
+    ]
+  },
+  "vocabulary_size": 4283,
+  "sparsity_analysis": {
+    "train": 0.9981041627926012,
+    "val": 0.9984644990923192,
+    "test": 0.9983986628223714
+  },
+  "creation_date": "2025-06-16 10:58:14",
+  "expected_performance_range": "75-90% F1-Score (realistic, clean features)",
+  "vectorizer_integrity": "fitted_on_training_data_only"
+}

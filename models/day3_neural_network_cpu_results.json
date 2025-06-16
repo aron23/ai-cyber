@@ -1,0 +1,27 @@
+{
+  "timestamp": "2025-06-16T12:12:28.059081",
+  "day": 3,
+  "phase": "neural_networks_cpu",
+  "best_model": "wide_network",
+  "best_f1_score": 0.9133858267716536,
+  "baseline_comparison": {
+    "baseline_svm_f1": 0.926,
+    "best_neural_f1": 0.9133858267716536,
+    "improvement": -0.01261417322834646
+  },
+  "optimization": {
+    "alpha": 0.01,
+    "hidden_layer_sizes": [
+      500,
+      250
+    ],
+    "learning_rate_init": 0.005
+  },
+  "models_saved": [
+    "deep_network",
+    "wide_network",
+    "regularized_network",
+    "balanced_network",
+    "optimized_final"
+  ]
+}
