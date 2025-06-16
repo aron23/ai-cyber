@@ -66,7 +66,7 @@ data/clean/features/*.npz
 data/clean/features/*_features*.npy
 data/clean/features/*_features*.npz
 
-# Model Files (can be large)
+# Model Files (can be large) - Comprehensive patterns
 models/*.pkl
 models/*.joblib
 models/*.h5
@@ -74,6 +74,13 @@ models/*.pb
 models/*.pth
 models/*.pt
 models/*.onnx
+models/**/*.pkl
+models/**/*.joblib
+models/**/*.h5
+models/**/*.pb
+models/**/*.pth
+models/**/*.pt
+models/**/*.onnx
 models/checkpoints/
 models/cache/
 models/day*/
@@ -86,6 +93,18 @@ models/best_*.pkl
 ensemble_models/
 ensemble_models/*.joblib
 ensemble_models/*.pkl
+
+# Feature and Data Files (can be large)
+data/**/*.pkl
+data/**/*.joblib
+data/**/*.zip
+data/**/*.gz
+data/**/*.tar
+data/**/*.7z
+*.zip
+*.gz
+*.tar
+*.7z
 
 # Logs and Monitoring
 logs/
