@@ -1,0 +1,25 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - "spam_filter_rules.yml"
+
+scrape_configs:
+  - job_name: 'spam-filter-models'
+    static_configs:
+      - targets: ['spam-filter-model-0:8000']
+      - targets: ['spam-filter-model-1:8001']
+      - targets: ['spam-filter-model-2:8002']
+      - targets: ['spam-filter-model-3:8003']
+      - targets: ['spam-filter-model-4:8004']
+
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - alertmanager:9093

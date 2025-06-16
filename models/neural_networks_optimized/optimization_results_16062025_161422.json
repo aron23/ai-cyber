@@ -1,0 +1,130 @@
+{
+  "notebook": "08_advanced_training_optimization",
+  "timestamp": "16062025_161422",
+  "best_model": {
+    "architecture": "balanced_network_advanced",
+    "validation_f1": 0.9361702127659575,
+    "test_f1": 0.9251700680272109,
+    "test_precision": 0.9379310344827586,
+    "test_recall": 0.912751677852349,
+    "model_path": "../../models/neural_networks_optimized/neural_network_optimized_balanced_network_advanced_16062025_161422.joblib",
+    "best_params": {
+      "validation_fraction": 0.15,
+      "random_state": 42,
+      "n_iter_no_change": 25,
+      "max_iter": 500,
+      "learning_rate_init": 0.001,
+      "hidden_layer_sizes": [
+        1000,
+        500
+      ],
+      "early_stopping": true,
+      "beta_2": 0.9999,
+      "beta_1": 0.95,
+      "alpha": 0.005
+    },
+    "achievement_status": "GOOD"
+  },
+  "all_optimized_models": {
+    "wide_network_advanced": {
+      "path": "../../models/neural_networks_optimized/neural_network_optimized_wide_network_advanced_16062025_161422.joblib",
+      "validation_f1": 0.935064935064935,
+      "best_params": {
+        "validation_fraction": 0.15,
+        "random_state": 42,
+        "n_iter_no_change": 25,
+        "max_iter": 500,
+        "learning_rate_init": 0.001,
+        "hidden_layer_sizes": [
+          1000,
+          500
+        ],
+        "early_stopping": true,
+        "beta_2": 0.9999,
+        "beta_1": 0.95,
+        "alpha": 0.005
+      },
+      "optimization_time": 1955.7713706493378
+    },
+    "deep_network_advanced": {
+      "path": "../../models/neural_networks_optimized/neural_network_optimized_deep_network_advanced_16062025_161422.joblib",
+      "validation_f1": 0.9244444444444444,
+      "best_params": {
+        "validation_fraction": 0.2,
+        "random_state": 42,
+        "n_iter_no_change": 25,
+        "max_iter": 400,
+        "learning_rate_init": 0.001,
+        "hidden_layer_sizes": [
+          300,
+          150,
+          75,
+          35
+        ],
+        "early_stopping": true,
+        "beta_2": 0.9999,
+        "beta_1": 0.9,
+        "alpha": 0.02
+      },
+      "optimization_time": 947.5255599021912
+    },
+    "balanced_network_advanced": {
+      "path": "../../models/neural_networks_optimized/neural_network_optimized_balanced_network_advanced_16062025_161422.joblib",
+      "validation_f1": 0.9361702127659575,
+      "best_params": {
+        "validation_fraction": 0.15,
+        "random_state": 42,
+        "n_iter_no_change": 22,
+        "max_iter": 450,
+        "learning_rate_init": 0.0015,
+        "hidden_layer_sizes": [
+          640,
+          320,
+          160,
+          80
+        ],
+        "early_stopping": true,
+        "beta_2": 0.999,
+        "beta_1": 0.9,
+        "alpha": 0.0005
+      },
+      "optimization_time": 1423.1628556251526
+    }
+  },
+  "optimization_summary": [
+    {
+      "architecture": "wide_network_advanced",
+      "cv_f1_score": 0.9424421751326285,
+      "validation_f1": 0.935064935064935,
+      "validation_precision": 0.972972972972973,
+      "validation_recall": 0.9,
+      "optimization_time": 1955.7713706493378
+    },
+    {
+      "architecture": "deep_network_advanced",
+      "cv_f1_score": 0.9425048846905337,
+      "validation_f1": 0.9244444444444444,
+      "validation_precision": 0.9904761904761905,
+      "validation_recall": 0.8666666666666667,
+      "optimization_time": 947.5255599021912
+    },
+    {
+      "architecture": "balanced_network_advanced",
+      "cv_f1_score": 0.9424987364337625,
+      "validation_f1": 0.9361702127659575,
+      "validation_precision": 0.9565217391304348,
+      "validation_recall": 0.9166666666666666,
+      "optimization_time": 1423.1628556251526
+    }
+  ],
+  "business_metrics": {
+    "false_positive_rate": 0.009316770186335404,
+    "false_negative_rate": 0.087248322147651
+  },
+  "target_achievement": {
+    "target_f1": 0.94,
+    "achieved_f1": 0.9251700680272109,
+    "target_met": false,
+    "performance_level": "GOOD"
+  }
+}

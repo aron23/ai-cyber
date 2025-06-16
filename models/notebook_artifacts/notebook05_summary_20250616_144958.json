@@ -1,0 +1,48 @@
+{
+  "notebook": "05_baseline_model_development",
+  "timestamp": "20250616_144958",
+  "performance_summary": {
+    "SVM (LinearSVC)": {
+      "cv_f1_mean": NaN,
+      "cv_f1_std": NaN,
+      "test_f1": 0.8992248062015504,
+      "test_precision": 0.9133858267716536,
+      "test_recall": 0.8854961832061069,
+      "target_f1": 92.6,
+      "training_time": 1.714534,
+      "target_achieved": true
+    },
+    "Logistic Regression": {
+      "cv_f1_mean": NaN,
+      "cv_f1_std": NaN,
+      "test_f1": 0.9,
+      "test_precision": 0.9069767441860465,
+      "test_recall": 0.8931297709923665,
+      "target_f1": 90.5,
+      "training_time": 1.264675,
+      "target_achieved": true
+    },
+    "Naive Bayes": {
+      "cv_f1_mean": NaN,
+      "cv_f1_std": NaN,
+      "test_f1": 0.8755364806866953,
+      "test_precision": 1.0,
+      "test_recall": 0.7786259541984732,
+      "target_f1": 86.8,
+      "training_time": 1.008371,
+      "target_achieved": true
+    },
+    "Random Forest": {
+      "cv_f1_mean": NaN,
+      "cv_f1_std": NaN,
+      "test_f1": 0.8813559322033898,
+      "test_precision": 0.9904761904761905,
+      "test_recall": 0.7938931297709924,
+      "target_f1": 87.0,
+      "training_time": 0.795453,
+      "target_achieved": true
+    }
+  },
+  "best_model": "Logistic Regression",
+  "best_f1_score": 0.9
+}

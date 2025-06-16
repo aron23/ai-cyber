@@ -1,0 +1,49 @@
+{
+  "model_info": {
+    "version": "v1.0.0",
+    "timestamp": "20250616_184502",
+    "notebook": "Notebook 11 - Performance Optimization & Target Achievement",
+    "methodology": "Advanced stacking ensemble with hyperparameter optimization",
+    "base_models": 5,
+    "neural_network_included": true
+  },
+  "development_performance": {
+    "test_f1": 0.9538461538461539,
+    "test_precision": 0.9612403100775194,
+    "test_recall": 0.9465648854961832,
+    "best_cv_score": NaN,
+    "optimization_params": {
+      "cv": 3,
+      "final_estimator__C": 0.1,
+      "final_estimator__class_weight": "balanced",
+      "final_estimator__solver": "liblinear"
+    }
+  },
+  "validation_performance": {
+    "external_f1": 0.9438202247191011,
+    "external_precision": 0.9776915615906887,
+    "external_recall": 0.9122171945701357,
+    "external_samples": 5949,
+    "validation_success": true,
+    "reference_comparison": 102.46664039942472,
+    "dataset_5971_validated": true
+  },
+  "targets_achieved": {
+    "target_94_percent": true,
+    "production_ready": true,
+    "exceeds_reference": true
+  },
+  "model_artifacts": {
+    "ensemble_model": "../../models/production_ensemble/final_ensemble_v1.0.0_20250616_184502.joblib",
+    "vectorizer": "../../models/production_ensemble/tfidf_vectorizer_v1.0.0_20250616_184502.joblib",
+    "feature_count": 5000
+  },
+  "deployment_info": {
+    "inference_ready": true,
+    "preprocessing_required": [
+      "TF-IDF vectorization"
+    ],
+    "output_format": "Binary classification (spam/ham)",
+    "expected_performance": "95.38% F1-Score"
+  }
+}

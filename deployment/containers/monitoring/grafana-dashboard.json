@@ -1,0 +1,49 @@
+{
+  "dashboard": {
+    "title": "World-Class Spam Filter Dashboard",
+    "tags": [
+      "spam-filter",
+      "world-class",
+      "production"
+    ],
+    "timezone": "browser",
+    "panels": [
+      {
+        "title": "Prediction Rate",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(spam_filter_predictions_total[5m])"
+          }
+        ]
+      },
+      {
+        "title": "Model Health Scores",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "spam_filter_model_health_score"
+          }
+        ]
+      },
+      {
+        "title": "Inference Time P95",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, spam_filter_prediction_duration_seconds_bucket)"
+          }
+        ]
+      },
+      {
+        "title": "Ensemble Agreement",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "spam_filter_ensemble_agreement"
+          }
+        ]
+      }
+    ]
+  }
+}
