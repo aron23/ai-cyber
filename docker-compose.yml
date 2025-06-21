@@ -1,0 +1,111 @@
+version: '3.8'
+
+services:
+  dev-env:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: ml-dev-env
+    volumes:
+      - .:/workspace
+      - ~/.ssh:/root/.ssh:ro
+      - ~/.gitconfig:/root/.gitconfig:ro
+    environment:
+      - PYTHONPATH=/workspace
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    ports:
+      - "8080:8080"
+    networks:
+      - ml-network
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: ml-jupyter
+    volumes:
+      - .:/workspace
+      - jupyter-data:/root/.jupyter
+    environment:
+      - PYTHONPATH=/workspace
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    ports:
+      - "8888:8888"
+    networks:
+      - ml-network
+    command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root
+
+  mlflow:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: ml-mlflow
+    volumes:
+      - ./mlruns:/mlruns
+      - ./mlartifacts:/mlartifacts
+    environment:
+      - MLFLOW_BACKEND_STORE_URI=sqlite:///mlruns/mlflow.db
+      - MLFLOW_DEFAULT_ARTIFACT_ROOT=/mlartifacts
+    ports:
+      - "5000:5000"
+    networks:
+      - ml-network
+    command: mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:///mlruns/mlflow.db --default-artifact-root /mlartifacts
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: ml-prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - ml-network
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: ml-grafana
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    ports:
+      - "3000:3000"
+    networks:
+      - ml-network
+    depends_on:
+      - prometheus
+
+  postgres:
+    image: postgres:15
+    container_name: ml-postgres
+    environment:
+      - POSTGRES_USER=mlflow
+      - POSTGRES_PASSWORD=mlflow
+      - POSTGRES_DB=mlflow
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - ml-network
+
+networks:
+  ml-network:
+    driver: bridge
+
+volumes:
+  jupyter-data:
+  prometheus-data:
+  grafana-data:
+  postgres-data:

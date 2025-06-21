@@ -1,0 +1,146 @@
+# Preprocessing Configuration
+# Detailed settings for data preprocessing steps
+
+# Byte-level preprocessing
+byte_preprocessing:
+  # Normalization
+  normalization:
+    method: "minmax"
+    params:
+      minmax:
+        feature_range: [0, 1]
+        clip: true
+      standard:
+        with_mean: true
+        with_std: true
+      robust:
+        quantile_range: [25.0, 75.0]
+  
+  # Byte encoding schemes
+  encoding:
+    # Direct byte encoding (0-255)
+    direct:
+      enabled: true
+      dtype: "float32"
+    
+    # Binary encoding (8 bits per byte)
+    binary:
+      enabled: false
+      bit_order: "big"  # Options: big, little
+    
+    # Frequency encoding
+    frequency:
+      enabled: false
+      vocab_size: 256
+
+# Packet-level preprocessing
+packet_preprocessing:
+  # Length standardization
+  standardization:
+    method: "padding"  # Options: padding, truncation, both
+    target_length: 1500
+    padding:
+      mode: "constant"  # Options: constant, edge, reflect
+      value: 0
+    truncation:
+      mode: "end"  # Options: start, end, middle
+  
+  # Packet filtering
+  filtering:
+    min_length: 20  # Minimum packet length
+    max_length: 1500  # Maximum packet length
+    remove_empty: true
+    remove_duplicates: false
+
+# Header preprocessing
+header_preprocessing:
+  # IP address handling
+  ip_addresses:
+    anonymize: false
+    encoding:
+      method: "none"  # Options: none, integer, subnet, embedding
+      integer_encoding:
+        byte_order: "big"
+      subnet_encoding:
+        mask_bits: 24
+  
+  # Port handling
+  ports:
+    encoding:
+      method: "raw"  # Options: raw, log, binned, categorical
+      log_encoding:
+        base: 10
+        offset: 1
+      binned_encoding:
+        bins:
+          - [0, 1024]      # Well-known ports
+          - [1024, 49152]  # Registered ports
+          - [49152, 65536] # Dynamic ports
+      categorical_encoding:
+        categories:
+          - 80   # HTTP
+          - 443  # HTTPS
+          - 22   # SSH
+          - 21   # FTP
+          - 25   # SMTP
+          - 53   # DNS
+          - 3306 # MySQL
+          - 3389 # RDP
+
+# Data quality preprocessing
+quality_preprocessing:
+  # Missing value handling
+  missing_values:
+    detection:
+      null_values: [null, "NA", "N/A", ""]
+      numeric_placeholders: [-999, -1]
+    
+    imputation:
+      numeric:
+        strategy: "zero"  # Options: zero, mean, median, forward_fill
+      categorical:
+        strategy: "mode"  # Options: mode, constant, drop
+        constant_value: "unknown"
+  
+  # Outlier handling
+  outliers:
+    detection:
+      method: "iqr"  # Options: iqr, zscore, isolation_forest
+      iqr_multiplier: 1.5
+      zscore_threshold: 3
+    
+    treatment:
+      method: "clip"  # Options: clip, remove, transform
+      clip_percentiles: [1, 99]
+
+# Data validation
+validation:
+  # Schema validation
+  schema:
+    enforce_column_order: true
+    enforce_column_types: true
+    allow_extra_columns: false
+  
+  # Value validation
+  values:
+    bytes:
+      min: 0
+      max: 255
+      allow_null: false
+    
+    ports:
+      min: 0
+      max: 65535
+      allow_null: false
+    
+    labels:
+      allowed_values: [0, 1, 2, 3, 4, 5]
+      allow_null: false
+
+# Preprocessing pipeline order
+pipeline_order:
+  - "quality_preprocessing"
+  - "header_preprocessing"
+  - "packet_preprocessing"
+  - "byte_preprocessing"
+  - "validation"

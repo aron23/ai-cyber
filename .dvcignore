@@ -1,0 +1,39 @@
+# Add patterns of files DVC should ignore, which could improve
+# the performance. Learn more at
+# https://dvc.org/doc/user-guide/dvcignore
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model artifacts (managed separately)
+mlruns/
+mlartifacts/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Large raw data files that should be managed separately
+data/raw/large_datasets/
+data/external/downloads/

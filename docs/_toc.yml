@@ -1,0 +1,36 @@
+# Table of contents for Jupyter Book
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+  - file: notebooks/01_data_exploration_basic
+    title: Data Exploration
+  - file: notebooks/02_data_preprocessing_basic
+    title: Data Preprocessing
+  - file: notebooks/03_packet_visualization_basic
+    title: Packet Visualization
+  - file: notebooks/04_image_encoding_sequential_intermediate
+    title: Sequential Encoding
+  - file: notebooks/05_image_encoding_advanced_intermediate
+    title: Advanced Encoding Methods
+  - file: notebooks/06_feature_engineering_intermediate
+    title: Feature Engineering
+  - file: notebooks/07_vit_implementation_intermediate
+    title: Vision Transformer Implementation
+  - file: notebooks/08_vit_training_intermediate
+    title: Training the Model
+  - file: notebooks/09_attention_analysis_advanced
+    title: Attention Analysis
+  - file: notebooks/10_few_shot_basics_advanced
+    title: Few-Shot Learning Basics
+  - file: notebooks/11_few_shot_implementation_advanced
+    title: Few-Shot Implementation
+  - file: notebooks/12_model_optimization_advanced
+    title: Model Optimization
+  - file: notebooks/13_deployment_preparation_advanced
+    title: Deployment Preparation
+  - file: notebooks/14_production_pipeline_advanced
+    title: Production Pipeline
+  - file: notebooks/15_tutorial_complete
+    title: Complete Tutorial

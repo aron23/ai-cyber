@@ -1,0 +1,53 @@
+# MLflow Configuration
+mlflow:
+  # Tracking server configuration
+  tracking:
+    uri: "http://localhost:5000"
+    artifact_location: "/mlartifacts"
+    backend_store_uri: "sqlite:///mlruns/mlflow.db"
+    
+  # Experiment configuration
+  experiments:
+    default_experiment: "default"
+    experiments_path: "/mlruns/experiments"
+    
+  # Model registry configuration
+  registry:
+    backend_store_uri: "sqlite:///mlruns/mlflow.db"
+    model_stages:
+      - "None"
+      - "Staging"
+      - "Production"
+      - "Archived"
+    
+  # Logging configuration
+  logging:
+    log_models: true
+    log_input_examples: true
+    log_model_signatures: true
+    autolog:
+      disable: false
+      exclusive: false
+      disable_for_unsupported_versions: true
+      silent: false
+      
+  # Server configuration
+  server:
+    host: "0.0.0.0"
+    port: 5000
+    workers: 4
+    static_prefix: ""
+    serve_artifacts: true
+    artifacts_only: false
+    
+  # Performance settings
+  performance:
+    max_batch_size: 1000
+    max_latency_ms: 5000
+    request_timeout_ms: 120000
+    
+  # Security settings
+  security:
+    default_permission: "READ"
+    database_uri_env_var: "MLFLOW_BACKEND_STORE_URI"
+    artifact_uri_env_var: "MLFLOW_ARTIFACT_URI"

@@ -1,0 +1,43 @@
+# DVC Pipeline Parameters
+
+prepare:
+  split_ratio: 0.8
+  random_seed: 42
+  validation_split: 0.2
+  stratify: true
+  
+features:
+  max_features: 100
+  feature_selection_method: "mutual_info"
+  scaling_method: "standard"
+  handle_missing: "mean"
+  encode_categorical: true
+  
+train:
+  algorithm: "random_forest"
+  hyperparameters:
+    n_estimators: 100
+    max_depth: 10
+    min_samples_split: 5
+    min_samples_leaf: 2
+    random_state: 42
+  early_stopping: true
+  early_stopping_rounds: 10
+  validation_metric: "f1_score"
+  cv_folds: 5
+  random_seed: 42
+  
+model:
+  save_format: "pickle"
+  compression: "gzip"
+  include_preprocessor: true
+  
+evaluation:
+  metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1_score
+    - roc_auc
+  confidence_level: 0.95
+  bootstrap_iterations: 1000

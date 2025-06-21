@@ -1,0 +1,81 @@
+stages:
+  prepare_data:
+    cmd: python src/data/prepare_data.py
+    deps:
+      - src/data/prepare_data.py
+      - data/raw
+    outs:
+      - data/processed/train.csv
+      - data/processed/test.csv
+      - data/processed/validation.csv
+    params:
+      - prepare.split_ratio
+      - prepare.random_seed
+    metrics:
+      - metrics/data_prep_metrics.json:
+          cache: false
+
+  feature_engineering:
+    cmd: python src/features/build_features.py
+    deps:
+      - src/features/build_features.py
+      - data/processed/train.csv
+      - data/processed/test.csv
+      - data/processed/validation.csv
+    outs:
+      - data/features/train_features.pkl
+      - data/features/test_features.pkl
+      - data/features/validation_features.pkl
+      - data/features/feature_names.json
+    params:
+      - features.max_features
+      - features.feature_selection_method
+
+  train_model:
+    cmd: python src/models/train.py
+    deps:
+      - src/models/train.py
+      - data/features/train_features.pkl
+      - data/features/validation_features.pkl
+    outs:
+      - models/model.pkl
+      - models/model_metadata.json
+    params:
+      - train.algorithm
+      - train.hyperparameters
+      - train.random_seed
+    metrics:
+      - metrics/train_metrics.json:
+          cache: false
+    plots:
+      - plots/confusion_matrix.csv:
+          template: confusion
+          x: predicted
+          y: actual
+      - plots/roc_curve.json:
+          template: simple
+          x: fpr
+          y: tpr
+
+  evaluate_model:
+    cmd: python src/models/evaluate.py
+    deps:
+      - src/models/evaluate.py
+      - models/model.pkl
+      - data/features/test_features.pkl
+    metrics:
+      - metrics/eval_metrics.json:
+          cache: false
+    plots:
+      - plots/predictions.csv:
+          template: scatter
+          x: actual
+          y: predicted
+
+metrics:
+  - metrics/eval_metrics.json
+
+plots:
+  - plots/confusion_matrix.csv
+  - plots/roc_curve.json
+  - plots/predictions.csv

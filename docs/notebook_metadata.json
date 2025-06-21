@@ -1,0 +1,19 @@
+[
+  {
+    "tags": [
+      "data-exploration",
+      "eda",
+      "network-security",
+      "visualization"
+    ],
+    "difficulty": "beginner",
+    "estimated_time": "45 minutes",
+    "prerequisites": [
+      "python-basics",
+      "pandas",
+      "matplotlib"
+    ],
+    "filename": "02_data_exploration.ipynb",
+    "title": "02. Data Exploration - Payload-Byte Dataset"
+  }
+]

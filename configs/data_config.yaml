@@ -1,0 +1,139 @@
+# Data Pipeline Configuration
+# This file contains all configuration parameters for the data pipeline
+
+data:
+  # Data source settings
+  raw_data_path: "data/raw/payload_byte"
+  processed_data_path: "data/processed"
+  cache_path: "data/cache"
+  
+  # File patterns
+  file_patterns:
+    - "*.csv"
+    - "*.parquet"
+  
+  # Data loading parameters
+  chunk_size: 10000
+  n_workers: 4
+  
+  # Feature definitions
+  features:
+    header:
+      - "src_ip"
+      - "dst_ip" 
+      - "src_port"
+      - "dst_port"
+    
+    payload:
+      n_bytes: 1500
+      prefix: "byte_"
+    
+    label_column: "label"
+  
+  # Data splitting
+  split_ratios:
+    train: 0.7
+    validation: 0.15
+    test: 0.15
+  
+  # Stratification settings
+  stratify: true
+  random_state: 42
+
+preprocessing:
+  # Normalization settings
+  byte_normalization:
+    enabled: true
+    method: "minmax"  # Options: minmax, standard, none
+    range: [0, 1]
+  
+  # Packet length handling
+  packet_length:
+    target_length: 1500
+    padding_value: 0
+    truncate: true
+  
+  # Header processing
+  ip_encoding:
+    enabled: false
+    method: "integer"  # Options: integer, one-hot, embedding
+  
+  port_encoding:
+    enabled: false
+    method: "log"  # Options: raw, log, binned
+  
+  # Missing value handling
+  missing_values:
+    strategy: "zero"  # Options: zero, mean, median, drop
+    
+  # Data augmentation
+  augmentation:
+    enabled: false
+    noise_level: 0.01
+    byte_flip_prob: 0.001
+
+feature_engineering:
+  # Statistical features
+  statistical_features:
+    enabled: true
+    features:
+      - "mean"
+      - "std"
+      - "min"
+      - "max"
+      - "entropy"
+      - "unique_bytes"
+  
+  # N-gram features
+  ngram_features:
+    enabled: false
+    n_values: [2, 3]
+    max_features: 1000
+  
+  # Packet-to-image conversion
+  image_conversion:
+    enabled: false
+    image_size: [224, 224]
+    mapping: "sequential"  # Options: sequential, hilbert, spiral
+
+pipeline:
+  # Batch processing
+  batch_size: 32
+  
+  # Memory management
+  max_memory_gb: 8
+  
+  # Caching
+  cache:
+    enabled: true
+    format: "hdf5"  # Options: hdf5, parquet, pickle
+    compression: "gzip"
+    ttl_hours: 24
+  
+  # Validation
+  validation:
+    enabled: true
+    check_schema: true
+    check_ranges: true
+    
+  # Logging
+  log_level: "INFO"
+  log_metrics: true
+
+performance:
+  # Parallel processing
+  multiprocessing:
+    enabled: true
+    n_jobs: -1  # -1 for all cores
+    backend: "threading"  # Options: threading, multiprocessing
+  
+  # Memory optimization
+  dtype_optimization:
+    enabled: true
+    byte_dtype: "uint8"
+    port_dtype: "uint16"
+    
+  # Benchmarking
+  benchmark:
+    enabled: false
+    n_iterations: 3

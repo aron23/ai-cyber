@@ -1,0 +1,179 @@
+site_name: Vision Transformer Network Traffic Analysis
+site_description: Comprehensive documentation for the ViT-based network malware detection project
+site_author: Documentation Team
+site_url: https://your-domain.com/docs
+
+# Repository
+repo_name: your-org/vit-network-traffic
+repo_url: https://github.com/your-org/vit-network-traffic
+edit_uri: edit/main/docs/
+
+# Copyright
+copyright: Copyright &copy; 2024 - Your Organization
+
+# Configuration
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.instant
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/favicon.png
+  icon:
+    logo: material/shield-check
+
+# Plugins
+plugins:
+  - search:
+      lang: en
+  - minify:
+      minify_html: true
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: true
+            show_root_heading: true
+            show_category_heading: true
+            show_signature_annotations: true
+            show_if_no_docstring: false
+            merge_init_into_class: true
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Page tree
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting_started/installation.md
+    - Quick Start: getting_started/quick_start.md
+    - First Model: getting_started/first_model.md
+  - Tutorials:
+    - Basics:
+      - Understanding Packets: tutorials/basics/understanding_packets.md
+      - Why Vision Transformers: tutorials/basics/why_vit.md
+      - First Classification: tutorials/basics/first_classification.md
+    - Intermediate:
+      - Image Encoding Methods: tutorials/intermediate/encoding_methods.md
+      - Training Your Model: tutorials/intermediate/training.md
+      - Model Evaluation: tutorials/intermediate/evaluation.md
+    - Advanced:
+      - Few-Shot Learning: tutorials/advanced/few_shot.md
+      - Model Optimization: tutorials/advanced/optimization.md
+      - Production Deployment: tutorials/advanced/deployment.md
+  - Concepts:
+    - Vision Transformers: concepts/vision_transformers.md
+    - Attention Mechanisms: concepts/attention.md
+    - Packet Encoding: concepts/packet_encoding.md
+    - Few-Shot Learning: concepts/few_shot_learning.md
+  - API Reference:
+    - Data Processing: api/data_processing.md
+    - Models: api/models.md
+    - Training: api/training.md
+    - Evaluation: api/evaluation.md
+    - Utilities: api/utilities.md
+  - Architecture:
+    - System Overview: architecture/overview.md
+    - Data Pipeline: architecture/data_pipeline.md
+    - Model Architecture: architecture/model_architecture.md
+    - Deployment: architecture/deployment.md
+  - Research:
+    - Papers: research/papers.md
+    - Experiments: research/experiments.md
+    - Results: research/results.md
+    - Future Work: research/future_work.md
+  - Best Practices:
+    - Data Preprocessing: best_practices/preprocessing.md
+    - Model Training: best_practices/training.md
+    - Performance Tuning: best_practices/tuning.md
+    - Debugging: best_practices/debugging.md
+  - Contributing:
+    - Guidelines: contributing/guidelines.md
+    - Code Standards: contributing/code_standards.md
+    - Documentation: contributing/documentation.md
+  - About:
+    - Team: about/team.md
+    - License: about/license.md
+    - Changelog: about/changelog.md
+
+# Customization
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/your-org
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/your-org
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX
+  version:
+    provider: mike
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

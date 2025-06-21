@@ -1,0 +1,25 @@
+[core]
+    analytics = false
+    autostage = true
+
+[cache]
+    type = symlink
+    protected = true
+
+['remote "local"']
+    url = /tmp/dvc-storage
+
+['remote "s3"']
+    url = s3://your-bucket-name/dvc-storage
+    region = us-east-1
+
+[state]
+    row_limit = 10000000
+    row_cleanup_quota = 50
+
+[index]
+    dir = .dvc/cache/index
+
+[ui]
+    width = 80
+    no_pager = false

@@ -1,0 +1,101 @@
+# Jupyter Book configuration for notebook collection
+
+# Book settings
+title: Vision Transformer Network Traffic Analysis Notebooks
+author: Documentation Team
+copyright: "2024"
+logo: assets/logo.png
+
+# Force re-execution of notebooks on each build
+execute:
+  execute_notebooks: cache
+  cache: ""
+  exclude_patterns:
+    - _build
+    - .DS_Store
+    - "**.ipynb_checkpoints"
+  timeout: 600
+  stderr_output: show
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: vit_network_traffic_notebooks.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/your-org/vit-network-traffic
+  path_to_book: docs
+  branch: main
+
+# Add GitHub buttons to your book
+html:
+  use_issues_button: true
+  use_repository_button: true
+  use_edit_page_button: true
+  extra_navbar: Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+  extra_footer: ""
+  google_analytics_id: ""
+  home_page_in_navbar: true
+  baseurl: ""
+  comments:
+    hypothesis: false
+    utterances: false
+
+# Launch button settings
+launch_buttons:
+  notebook_interface: classic
+  binderhub_url: ""
+  jupyterhub_url: ""
+  thebe: false
+  colab_url: "https://colab.research.google.com"
+
+# Advanced and power-user settings
+sphinx:
+  extra_extensions:
+    - sphinx_panels
+    - sphinx_copybutton
+    - sphinx.ext.intersphinx
+    - sphinx.ext.autodoc
+    - sphinx.ext.napoleon
+    - sphinx.ext.viewcode
+  local_extensions:
+  recursive_update: false
+  config:
+    add_module_names: false
+    autosummary_generate: true
+    html_js_files:
+      - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    mathjax3_config:
+      TeX:
+        Macros:
+          "N": "\\mathbb{N}"
+          "Z": "\\mathbb{Z}"
+          "Q": "\\mathbb{Q}"
+          "R": "\\mathbb{R}"
+          "C": "\\mathbb{C}"
+          "prob": ["\\mathbb{P}\\left(#1\\right)", 1]
+          "expect": ["\\mathbb{E}\\left[#1\\right]", 1]
+          "var": ["\\text{Var}\\left(#1\\right)", 1]
+
+# Parse and render settings
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - substitution
+    - tasklist
+  myst_url_schemes: [mailto, http, https]
+  myst_dmath_double_inline: true

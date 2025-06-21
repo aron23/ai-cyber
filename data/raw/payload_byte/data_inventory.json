@@ -1,0 +1,90 @@
+{
+  "cic_ids2017_sample.csv": {
+    "file_name": "cic_ids2017_sample.csv",
+    "file_size_mb": 9.21,
+    "total_rows": 2000,
+    "total_columns": 1505,
+    "header_features": [
+      "src_ip",
+      "dst_ip",
+      "src_port",
+      "dst_port"
+    ],
+    "byte_features_count": 1500,
+    "label_column": "label",
+    "label_distribution": {
+      "0": 386,
+      "1": 343,
+      "2": 338,
+      "5": 323,
+      "4": 310,
+      "3": 300
+    },
+    "missing_values": {},
+    "byte_value_statistics": {
+      "min": 0,
+      "max": 255,
+      "mean": 126.7032,
+      "std": 77.08701518258441,
+      "unique_values": 256
+    },
+    "data_types_summary": {
+      "object": 2,
+      "int64": 1503,
+      "float64": 0
+    }
+  },
+  "unsw_nb15_sample.csv": {
+    "file_name": "unsw_nb15_sample.csv",
+    "file_size_mb": 9.15,
+    "total_rows": 2000,
+    "total_columns": 1505,
+    "header_features": [
+      "src_ip",
+      "dst_ip",
+      "src_port",
+      "dst_port"
+    ],
+    "byte_features_count": 1500,
+    "label_column": "label",
+    "label_distribution": {
+      "3": 357,
+      "0": 352,
+      "5": 344,
+      "2": 344,
+      "1": 303,
+      "4": 300
+    },
+    "missing_values": {},
+    "byte_value_statistics": {
+      "min": 0,
+      "max": 255,
+      "mean": 125.3695,
+      "std": 75.40731244216306,
+      "unique_values": 256
+    },
+    "data_types_summary": {
+      "object": 2,
+      "int64": 1503,
+      "float64": 0
+    }
+  },
+  "summary": {
+    "total_files": 2,
+    "total_size_mb": 18.36,
+    "total_records": 4000,
+    "combined_label_distribution": {
+      "0": 738,
+      "1": 646,
+      "2": 682,
+      "5": 667,
+      "4": 610,
+      "3": 657
+    },
+    "label_balance": {
+      "benign_ratio": 18.45,
+      "attack_ratio": 81.55
+    }
+  },
+  "created_at": "2025-06-20T21:08:19.782303"
+}
