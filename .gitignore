@@ -1,3 +1,13 @@
+historic
+historic/*
+historic/.ipynb_checkpoints/*
+historic/data/*
+historic/models/*
+historic/notebooks/*
+historic/notebooks/.ipynb_checkpoints/*
+historic/notebooks/data/*
+historic/notebooks/models/*
+historic/notebooks/notebooks/*
 # SMS/Email Spam Filter Project - .gitignore
 # Created: 15/06/2025
 # Task: DE-001 Environment Setup

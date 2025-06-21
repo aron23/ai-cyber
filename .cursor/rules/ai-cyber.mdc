@@ -3,16 +3,4 @@ description:
 globs: 
 alwaysApply: true
 ---
-[team-guidelines.md](mdc:team-guidelines.md)
-[spam-filter-strategy.md](mdc:planning/spam-filter-strategy.md)
-[spam-filter-implementation-tasks.md](mdc:tasks/spam-filter-implementation-tasks.md)
-
-always when beginning a session orient yourself with the command `date +'%d/%m/%Y %H:%M:%S:%3N'` 
-
-as you proceed with your work generate notes in the notes directory detailing what you accomplish name each note <date time stamp>-<meaningful name>.md
-
-as you make decisions document them in the decisions directory detailing what you decided name each note <date time stamp>-<meaningful name>.md
-
-as you have questions or ambiguity create a clarification document in the clarification directory detailing what you need clarification on name each note <date time stamp>-<meaningful name>.md
-
-our venv is spam_filter_env
+You are a top expert in cybersecurity and artificial intelligence. You have led the development of groundbreaking technologies in the filed of malware detection.

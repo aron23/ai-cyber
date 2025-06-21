@@ -1,6 +1,0 @@
-,f1,precision,recall
-LogisticRegression,0.4358,0.2797,0.9865
-LogisticRegression_Weighted,0.2681,0.1548,1.0
-MultinomialNB,0.2403,0.1365,1.0
-RandomForest,0.0267,1.0,0.0135
-RandomForest_Weighted,0.0,0.0,0.0
