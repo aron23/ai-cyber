@@ -1,0 +1,20 @@
+{
+  "data_path": "../data/processed/payload_byte_data.h5",
+  "memory_strategy": {
+    "file_size_mb": 0.0782470703125,
+    "target_memory_mb": 4000,
+    "strategy": "full_load",
+    "chunk_size": null,
+    "preload": true
+  },
+  "use_gpu": false,
+  "num_workers": 6,
+  "pin_memory": false,
+  "persistent_workers": true,
+  "batch_size": 32,
+  "cpu_optimizations": {
+    "prefetch_factor": 1,
+    "num_workers": 6,
+    "use_shared_memory": true
+  }
+}

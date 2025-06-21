@@ -10,6 +10,18 @@ from typing import Tuple, List, Union, Optional
 import torch
 from torch import nn
 import torch.nn.functional as F
+from torch.utils.data import Dataset, DataLoader
+from enum import Enum
+import time
+
+
+class EncodingStrategy(Enum):
+    """Enumeration of available encoding strategies."""
+    SEQUENTIAL = "sequential"
+    HILBERT = "hilbert"
+    SPIRAL = "spiral"
+    ZIGZAG = "zigzag"
+    BLOCK = "block"
 
 
 class PacketImageEncoder:
@@ -387,3 +399,284 @@ def calculate_optimal_image_size(packet_lengths: List[int],
     
     # If no common size fits, use custom size
     return (sqrt_size + 1, sqrt_size + 1)
+
+
+class PacketToImageConverter:
+    """
+    Converter class for transforming network packets into image representations.
+    Provides the API expected by the notebook.
+    """
+    
+    def __init__(self, default_image_size: Tuple[int, int] = (224, 224)):
+        """
+        Initialize the packet to image converter.
+        
+        Args:
+            default_image_size: Default target image dimensions (height, width)
+        """
+        self.default_image_size = default_image_size
+        self.encoder = PacketImageEncoder(default_image_size)
+        
+    def packet_to_image(self, 
+                       packet_bytes: Union[np.ndarray, List[int]],
+                       image_size: Optional[Tuple[int, int]] = None,
+                       strategy: EncodingStrategy = EncodingStrategy.SEQUENTIAL,
+                       normalize: bool = True) -> torch.Tensor:
+        """
+        Convert a single packet to image representation.
+        
+        Args:
+            packet_bytes: Packet byte data
+            image_size: Target image size (uses default if None)
+            strategy: Encoding strategy to use
+            normalize: Whether to normalize to [0, 1] range
+            
+        Returns:
+            Tensor of shape (1, H, W) representing the packet image
+        """
+        if image_size is None:
+            image_size = self.default_image_size
+            
+        # Ensure numpy array
+        if not isinstance(packet_bytes, np.ndarray):
+            packet_bytes = np.array(packet_bytes, dtype=np.uint8)
+            
+        # Update encoder image size if needed
+        if image_size != self.encoder.image_size:
+            self.encoder = PacketImageEncoder(image_size)
+            
+        # Encode based on strategy
+        if strategy == EncodingStrategy.SEQUENTIAL:
+            image = self.encoder.encode_sequential(packet_bytes)
+        elif strategy == EncodingStrategy.HILBERT:
+            image = self.encoder.encode_hilbert_curve(packet_bytes)
+        elif strategy == EncodingStrategy.SPIRAL:
+            image = self.encoder.encode_spiral(packet_bytes)
+        elif strategy == EncodingStrategy.BLOCK:
+            image = self.encoder.encode_block_based(packet_bytes)
+        elif strategy == EncodingStrategy.ZIGZAG:
+            image = self.encode_zigzag(packet_bytes, image_size)
+        else:
+            raise ValueError(f"Unknown encoding strategy: {strategy}")
+            
+        # Convert to tensor
+        tensor = torch.from_numpy(image).float().unsqueeze(0)  # Add channel dimension
+        
+        # Normalize if requested
+        if normalize:
+            tensor = tensor / 255.0
+            
+        return tensor
+    
+    def packets_to_images(self,
+                         packet_list: List[Union[np.ndarray, List[int]]],
+                         image_size: Optional[Tuple[int, int]] = None,
+                         strategy: EncodingStrategy = EncodingStrategy.SEQUENTIAL,
+                         normalize: bool = True) -> torch.Tensor:
+        """
+        Convert a batch of packets to image representations.
+        
+        Args:
+            packet_list: List of packet byte arrays
+            image_size: Target image size (uses default if None)
+            strategy: Encoding strategy to use
+            normalize: Whether to normalize to [0, 1] range
+            
+        Returns:
+            Tensor of shape (N, 1, H, W) representing the packet images
+        """
+        if image_size is None:
+            image_size = self.default_image_size
+            
+        images = []
+        for packet in packet_list:
+            image_tensor = self.packet_to_image(packet, image_size, strategy, normalize)
+            images.append(image_tensor)
+            
+        return torch.stack(images)
+    
+    def encode_zigzag(self, packet_bytes: np.ndarray, image_size: Tuple[int, int]) -> np.ndarray:
+        """
+        Encode packet bytes using zigzag pattern (like JPEG).
+        
+        Args:
+            packet_bytes: Array of byte values (0-255)
+            image_size: Target image dimensions
+            
+        Returns:
+            2D numpy array with zigzag mapping
+        """
+        h, w = image_size
+        total_pixels = h * w
+        
+        # Pad/truncate packet bytes
+        if len(packet_bytes) > total_pixels:
+            packet_bytes = packet_bytes[:total_pixels]
+        elif len(packet_bytes) < total_pixels:
+            packet_bytes = np.pad(packet_bytes, (0, total_pixels - len(packet_bytes)), 'constant')
+        
+        # Generate zigzag coordinates
+        coords = self._generate_zigzag_coords(image_size)
+        
+        # Create image using zigzag mapping
+        image = np.zeros(image_size, dtype=np.uint8)
+        for i, (x, y) in enumerate(coords[:len(packet_bytes)]):
+            image[y, x] = packet_bytes[i]
+        
+        return image
+    
+    def _generate_zigzag_coords(self, image_size: Tuple[int, int]) -> List[Tuple[int, int]]:
+        """Generate zigzag coordinates for JPEG-like encoding."""
+        h, w = image_size
+        coords = []
+        
+        for i in range(h):
+            if i % 2 == 0:
+                # Left to right
+                for j in range(w):
+                    coords.append((j, i))
+            else:
+                # Right to left
+                for j in range(w-1, -1, -1):
+                    coords.append((j, i))
+        
+        return coords
+    
+    def benchmark_encoding_speeds(self, 
+                                 packet_sizes: List[int] = [256, 512, 1024, 2048, 4096],
+                                 num_trials: int = 100) -> dict:
+        """
+        Benchmark encoding speeds for different strategies and packet sizes.
+        
+        Args:
+            packet_sizes: List of packet sizes to test
+            num_trials: Number of trials per configuration
+            
+        Returns:
+            Dictionary of results
+        """
+        results = {}
+        
+        for size in packet_sizes:
+            size_key = f"packet_{size}"
+            results[size_key] = {}
+            
+            # Generate test packet
+            test_packet = np.random.randint(0, 256, size, dtype=np.uint8)
+            
+            for strategy in EncodingStrategy:
+                times = []
+                
+                for _ in range(num_trials):
+                    start_time = time.time()
+                    _ = self.packet_to_image(test_packet, strategy=strategy)
+                    end_time = time.time()
+                    times.append(end_time - start_time)
+                
+                avg_time = np.mean(times)
+                results[size_key][strategy.value] = avg_time
+        
+        return results
+    
+    def optimize_memory_usage(self, batch_size: int) -> dict:
+        """
+        Calculate memory usage statistics for a given batch size.
+        
+        Args:
+            batch_size: Number of packets in a batch
+            
+        Returns:
+            Dictionary with memory statistics
+        """
+        h, w = self.default_image_size
+        bytes_per_image = h * w
+        batch_memory_bytes = batch_size * bytes_per_image * 4  # float32
+        batch_memory_mb = batch_memory_bytes / (1024 * 1024)
+        
+        return {
+            'batch_size': batch_size,
+            'bytes_per_image': bytes_per_image,
+            'batch_memory_bytes': batch_memory_bytes,
+            'batch_memory_mb': batch_memory_mb
+        }
+
+
+class PacketImageDataset(Dataset):
+    """PyTorch Dataset for packet images."""
+    
+    def __init__(self, 
+                 packets: List[np.ndarray], 
+                 labels: List[int],
+                 image_size: Tuple[int, int] = (224, 224),
+                 strategy: EncodingStrategy = EncodingStrategy.SEQUENTIAL,
+                 normalize: bool = True):
+        """
+        Initialize dataset.
+        
+        Args:
+            packets: List of packet byte arrays
+            labels: List of corresponding labels
+            image_size: Target image size
+            strategy: Encoding strategy
+            normalize: Whether to normalize images
+        """
+        self.packets = packets
+        self.labels = labels
+        self.converter = PacketToImageConverter(image_size)
+        self.strategy = strategy
+        self.normalize = normalize
+        
+    def __len__(self):
+        return len(self.packets)
+    
+    def __getitem__(self, idx):
+        packet = self.packets[idx]
+        label = self.labels[idx]
+        
+        # Convert packet to image
+        image = self.converter.packet_to_image(
+            packet, 
+            strategy=self.strategy, 
+            normalize=self.normalize
+        )
+        
+        return image, torch.tensor(label, dtype=torch.long)
+
+
+def create_batch_generator(packets: List[np.ndarray],
+                          labels: List[int],
+                          batch_size: int = 32,
+                          image_size: Tuple[int, int] = (224, 224),
+                          strategy: EncodingStrategy = EncodingStrategy.SEQUENTIAL,
+                          shuffle: bool = True,
+                          num_workers: int = 0) -> DataLoader:
+    """
+    Create a PyTorch DataLoader for packet images.
+    
+    Args:
+        packets: List of packet byte arrays
+        labels: List of corresponding labels
+        batch_size: Batch size for DataLoader
+        image_size: Target image size
+        strategy: Encoding strategy
+        shuffle: Whether to shuffle data
+        num_workers: Number of worker processes
+        
+    Returns:
+        PyTorch DataLoader
+    """
+    dataset = PacketImageDataset(
+        packets=packets,
+        labels=labels,
+        image_size=image_size,
+        strategy=strategy,
+        normalize=True
+    )
+    
+    return DataLoader(
+        dataset,
+        batch_size=batch_size,
+        shuffle=shuffle,
+        num_workers=num_workers,
+        pin_memory=torch.cuda.is_available()
+    )

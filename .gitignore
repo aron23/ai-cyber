@@ -220,3 +220,5 @@ data/features/*.npy
 data/features/*_features*.npy
 data/clean/features/*.npy
 data/clean/features/*_features*.npy
+
+checkpoints

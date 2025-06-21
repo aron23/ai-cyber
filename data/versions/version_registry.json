@@ -1,0 +1,53 @@
+{
+  "versions": {
+    "v_20250621_122215_a21b30400c8b5d11": {
+      "version_id": "v_20250621_122215_a21b30400c8b5d11",
+      "data_path": "/home/ubuntu/analyst/data/raw/payload_byte/cic_ids2017_sample.csv",
+      "metadata": {
+        "version_id": "v_20250621_122215_a21b30400c8b5d11",
+        "data_path": "/home/ubuntu/analyst/data/raw/payload_byte/cic_ids2017_sample.csv",
+        "data_hash": "a21b30400c8b5d11",
+        "description": "Pipeline demo version of cic_ids2017_sample.csv",
+        "preprocessing_params": {},
+        "parent_version": null,
+        "tags": [
+          "demo",
+          "pipeline"
+        ],
+        "created_at": "2025-06-21T12:22:15.266850",
+        "created_by": "data_engineering_team",
+        "statistics": {
+          "file_size_mb": 9.208170890808105,
+          "columns": 1505,
+          "sample_rows": 5
+        }
+      },
+      "created_at": "2025-06-21T12:22:15.266850"
+    },
+    "v_20250621_122714_c6cf6bdefc5aee10": {
+      "version_id": "v_20250621_122714_c6cf6bdefc5aee10",
+      "data_path": "/home/ubuntu/analyst/data/raw/payload_byte/unsw_nb15_sample.csv",
+      "metadata": {
+        "version_id": "v_20250621_122714_c6cf6bdefc5aee10",
+        "data_path": "/home/ubuntu/analyst/data/raw/payload_byte/unsw_nb15_sample.csv",
+        "data_hash": "c6cf6bdefc5aee10",
+        "description": "Pipeline demo version of unsw_nb15_sample.csv",
+        "preprocessing_params": {},
+        "parent_version": null,
+        "tags": [
+          "demo",
+          "pipeline"
+        ],
+        "created_at": "2025-06-21T12:27:14.119630",
+        "created_by": "data_engineering_team",
+        "statistics": {
+          "file_size_mb": 9.15471363067627,
+          "columns": 1505,
+          "sample_rows": 5
+        }
+      },
+      "created_at": "2025-06-21T12:27:14.119630"
+    }
+  },
+  "latest": "v_20250621_122714_c6cf6bdefc5aee10"
+}

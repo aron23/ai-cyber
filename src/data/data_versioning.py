@@ -208,7 +208,9 @@ class DataVersionManager:
         
         # Check if this exact version already exists
         for vid, vdata in self.registry['versions'].items():
-            if vdata['data_hash'] == data_hash:
+            # Check if data_hash exists in metadata
+            existing_hash = vdata.get('metadata', {}).get('data_hash')
+            if existing_hash == data_hash:
                 logger.warning(f"Data version already exists: {vid}")
                 return DataVersion.from_dict(vdata)
         
@@ -348,7 +350,9 @@ class DataVersionManager:
         # Find ancestors
         for vid, vdata in self.registry['versions'].items():
             if vid == version_id:
-                parent = vdata['metadata'].get('parent_version')
+                # Handle different registry formats
+                metadata = vdata.get('metadata', {})
+                parent = metadata.get('parent_version')
                 if parent:
                     lineage_info['ancestors'].append(parent)
                     # Recursively get ancestors
@@ -419,7 +423,7 @@ class DataVersionManager:
                 (datetime.fromisoformat(v1.created_at) - 
                  datetime.fromisoformat(v2.created_at)).total_seconds() / 3600
             ),
-            'same_data': v1.metadata['data_hash'] == v2.metadata['data_hash'],
+            'same_data': v1.metadata.get('data_hash') == v2.metadata.get('data_hash'),
             'preprocessing_diff': self._diff_dicts(
                 v1.metadata.get('preprocessing_params', {}),
                 v2.metadata.get('preprocessing_params', {})

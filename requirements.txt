@@ -1,0 +1,39 @@
+# Core machine learning and data science dependencies
+numpy==2.3.0
+pandas==2.3.0
+matplotlib==3.10.3
+
+# PyTorch ecosystem
+torch==2.7.1
+torchvision==0.22.1
+torchinfo==1.8.0
+
+# Computer vision
+opencv-python==4.11.0.86
+PyWavelets==1.8.0
+scikit-image==0.25.2
+
+# Jupyter environment
+jupyter==1.1.1
+notebook==7.4.3
+jupyterlab==4.4.3
+
+# Development and testing
+pytest
+coverage
+pre-commit
+
+# Configuration and utilities
+pyyaml
+h5py
+scikit-learn
+seaborn
+tqdm
+
+# Logging and monitoring
+mlflow
+wandb
+tensorboard==2.19.0
+
+# Data versioning
+dvc 

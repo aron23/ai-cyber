@@ -176,19 +176,19 @@ class ByteOrderAwarePositionEmbedding(nn.Module):
             # Typical packet structure: Ethernet (14) + IP (20) + TCP/UDP (20/8) = ~42-54 bytes
             if byte_start < 54:
                 # Header region
-                pos_embed[:, i] += self.header_embed
+                pos_embed[:, i] += self.header_embed.squeeze(1)
             elif packet_lengths is not None:
                 # Check if this patch contains actual packet data or padding
                 for b in range(B):
                     if byte_end > packet_lengths[b]:
                         # This patch contains padding
-                        pos_embed[b, i] += self.padding_embed
+                        pos_embed[b, i] += self.padding_embed.squeeze(1)
                     else:
                         # Payload region
-                        pos_embed[b, i] += self.payload_embed
+                        pos_embed[b, i] += self.payload_embed.squeeze(1)
             else:
                 # Default to payload if no length info
-                pos_embed[:, i] += self.payload_embed
+                pos_embed[:, i] += self.payload_embed.squeeze(1)
                 
         return x + pos_embed * self.position_scale
 

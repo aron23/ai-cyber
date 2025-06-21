@@ -12,9 +12,9 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from sklearn.model_selection import train_test_split
 import torch
 from torch.utils.data import Dataset, DataLoader
-from src.utils.logger import setup_logger
+from src.utils.logger import setup_logger_safe
 
-logger = setup_logger('data_loader')
+logger = setup_logger_safe('data_loader')
 
 
 class PayloadByteDataLoader:
@@ -305,7 +305,23 @@ class PayloadByteDataset(Dataset):
         
         # Separate features and labels
         feature_cols = [col for col in dataframe.columns if col != 'label']
-        self.features = dataframe[feature_cols].values.astype(np.float32)
+        
+        # Filter to only numeric columns for PyTorch compatibility
+        numeric_cols = []
+        for col in feature_cols:
+            if pd.api.types.is_numeric_dtype(dataframe[col]):
+                numeric_cols.append(col)
+            else:
+                logger.warning(f"Skipping non-numeric column: {col} (dtype: {dataframe[col].dtype})")
+        
+        if not numeric_cols:
+            raise ValueError("No numeric columns found for features")
+        
+        logger.info(f"Using {len(numeric_cols)} numeric features out of {len(feature_cols)} total columns")
+        
+        # Convert numeric features to float32
+        self.features = dataframe[numeric_cols].values.astype(np.float32)
+        self.feature_names = numeric_cols
         
         if 'label' in dataframe.columns:
             self.labels = dataframe['label'].values.astype(np.int64)

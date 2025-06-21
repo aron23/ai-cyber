@@ -41,9 +41,9 @@ from pathlib import Path
 from typing import Dict, Any, Optional, Union
 import os
 from copy import deepcopy
-from src.utils.logger import setup_logger
+from src.utils.logger import setup_logger_safe
 
-logger = setup_logger('config_manager')
+logger = setup_logger_safe('config_manager')
 
 
 class ConfigManager:

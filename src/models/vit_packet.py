@@ -478,3 +478,100 @@ class PacketViTWithFeatures(nn.Module):
         logits = self.classifier(fused)
         
         return logits
+
+
+# Alias for compatibility
+VisionTransformer = PacketViT
+
+
+# Model registry and factory functions
+MODEL_REGISTRY = {
+    'vit_tiny_patch16_64': {
+        'model_size': 'tiny',
+        'image_size': 64,
+        'patch_size': 16
+    },
+    'vit_small_patch16_128': {
+        'model_size': 'small', 
+        'image_size': 128,
+        'patch_size': 16
+    },
+    'vit_base_patch16_224': {
+        'model_size': 'base',
+        'image_size': 224, 
+        'patch_size': 16
+    },
+    'vit_packet_small': {
+        'model_size': 'small',
+        'image_size': 128,
+        'patch_size': 16,
+        'embed_dim': 384,
+        'depth': 8,
+        'num_heads': 6
+    },
+    'vit_packet_base': {
+        'model_size': 'base',
+        'image_size': 224,
+        'patch_size': 16,
+        'embed_dim': 768,
+        'depth': 12,
+        'num_heads': 12
+    }
+}
+
+
+def create_model(model_name: str, num_classes: int = 6, **kwargs) -> PacketViT:
+    """
+    Create a model by name from the registry.
+    
+    Args:
+        model_name: Name of the model from MODEL_REGISTRY
+        num_classes: Number of output classes
+        **kwargs: Additional arguments to override defaults
+        
+    Returns:
+        PacketViT model instance
+    """
+    if model_name not in MODEL_REGISTRY:
+        raise ValueError(f"Unknown model: {model_name}. Available models: {list_models()}")
+    
+    config = MODEL_REGISTRY[model_name].copy()
+    config.update(kwargs)  # Override with user-provided values
+    config['num_classes'] = num_classes
+    
+    # Extract model_size if present, otherwise use config directly
+    if 'model_size' in config:
+        model_size = config.pop('model_size')
+        return create_packet_vit(model_size=model_size, **config)
+    else:
+        return PacketViT(**config)
+
+
+def list_models() -> List[str]:
+    """List all available model names."""
+    return list(MODEL_REGISTRY.keys())
+
+
+def vit_tiny_patch16_64(num_classes: int = 6, **kwargs) -> PacketViT:
+    """Create a tiny ViT model with 64x64 input size."""
+    return create_model('vit_tiny_patch16_64', num_classes=num_classes, **kwargs)
+
+
+def vit_small_patch16_128(num_classes: int = 6, **kwargs) -> PacketViT:
+    """Create a small ViT model with 128x128 input size."""
+    return create_model('vit_small_patch16_128', num_classes=num_classes, **kwargs)
+
+
+def vit_base_patch16_224(num_classes: int = 6, **kwargs) -> PacketViT:
+    """Create a base ViT model with 224x224 input size."""
+    return create_model('vit_base_patch16_224', num_classes=num_classes, **kwargs)
+
+
+def vit_packet_small(num_classes: int = 6, **kwargs) -> PacketViT:
+    """Create a small packet-optimized ViT model."""
+    return create_model('vit_packet_small', num_classes=num_classes, **kwargs)
+
+
+def vit_packet_base(num_classes: int = 6, **kwargs) -> PacketViT:
+    """Create a base packet-optimized ViT model."""
+    return create_model('vit_packet_base', num_classes=num_classes, **kwargs)

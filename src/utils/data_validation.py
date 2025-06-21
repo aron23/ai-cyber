@@ -7,9 +7,9 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional
-from src.utils.logger import setup_logger
+from src.utils.logger import setup_logger_safe
 
-logger = setup_logger('data_validation')
+logger = setup_logger_safe('data_validation')
 
 
 class DataValidator:

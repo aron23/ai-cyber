@@ -14,10 +14,10 @@ from datetime import datetime, timedelta
 import h5py
 import pickle
 import gzip
-from src.utils.logger import setup_logger
+from src.utils.logger import setup_logger_safe
 from src.utils.config_manager import get_config_manager
 
-logger = setup_logger('cache_manager')
+logger = setup_logger_safe('cache_manager')
 
 
 class CacheManager:
