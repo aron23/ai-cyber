@@ -74,7 +74,7 @@ The experiments classify network traffic into 9 categories:
 
 | Encoding Method | Test Accuracy | Parameters | Key Characteristics |
 |-----------------|---------------|------------|---------------------|
-| **5-Channel 32×32** | **92.86%** | 2.92M | Best overall performance; rich multi-dimensional features |
+| **5-Channel 32×32** | **93.30%** | 2.92M | Best overall performance; rich multi-dimensional features |
 | **RGB Hilbert 32×32** | 92.11% | 4.97M | Spatial locality preservation via Hilbert curve |
 | **Grayscale 39×39** | 91.01% | 2.71M | Higher resolution with 3×3 patch grid |
 | **Grayscale 32×32** | 90.52% | 2.72M | Simple yet effective; baseline approach |
@@ -84,7 +84,7 @@ All models tested on CIC-IoT23 dataset with 9 attack classes
 
 ### Key Findings
 
-1. **Multi-Channel Superiority**: The 5-channel encoding achieved the highest accuracy (92.86%), demonstrating that multiple perspectives of payload data enhance classification performance.
+1. **Multi-Channel Superiority**: The 5-channel encoding achieved the highest accuracy (93.30% validation), demonstrating that multiple perspectives of payload data enhance classification performance.
 
 2. **Spatial Encoding Impact**: RGB Hilbert encoding (92.11%) significantly outperformed RGB Spiral (79.06%), highlighting the importance of locality-preserving mappings. The Hilbert curve's ability to maintain spatial proximity proved more effective than the spiral pattern.
 
@@ -136,7 +136,7 @@ The original proof-of-concept notebook (`ViT_Prototype_Proof_of_Concept.ipynb`) 
 
 ## Conclusion
 
-This research successfully demonstrates that Vision Transformers can effectively classify network traffic by treating packet payloads as images. The 5-channel encoding approach achieved 92.86% accuracy across 9 attack types, validating the potential of computer vision techniques in cybersecurity applications. The experiments establish a foundation for future research in visual-based network security analysis.
+This research successfully demonstrates that Vision Transformers can effectively classify network traffic by treating packet payloads as images. The 5-channel encoding approach achieved 93.30% validation accuracy across 9 attack types, validating the potential of computer vision techniques in cybersecurity applications. The experiments establish a foundation for future research in visual-based network security analysis.
 
 ## Repository Structure
 
