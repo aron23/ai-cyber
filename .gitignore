@@ -222,3 +222,5 @@ data/clean/features/*.npy
 data/clean/features/*_features*.npy
 
 checkpoints
+
+payload-bytes
