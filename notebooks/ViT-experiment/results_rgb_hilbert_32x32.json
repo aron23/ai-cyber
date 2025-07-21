@@ -1,0 +1,233 @@
+{
+  "model_type": "rgb_hilbert_32x32",
+  "test_accuracy": 92.11111111111111,
+  "test_loss": 0.23568699936252396,
+  "num_classes": 9,
+  "num_parameters": 4971529,
+  "image_size": 32,
+  "channels": 3,
+  "patch_size": 16,
+  "patches_per_image": 4,
+  "embed_dim": 256,
+  "num_heads": 4,
+  "num_layers": 6,
+  "encoding_type": "hilbert_curve",
+  "spatial_locality": "preserved",
+  "class_accuracies": [
+    [
+      "Benign_Final",
+      88.66666666666667,
+      "1800"
+    ],
+    [
+      "DDoS-HTTP_Flood",
+      97.88888888888889,
+      "1800"
+    ],
+    [
+      "DDoS-SYN_Flood",
+      93.05555555555556,
+      "1800"
+    ],
+    [
+      "DictionaryBruteForce",
+      86.0,
+      "1800"
+    ],
+    [
+      "DoS-TCP_Flood",
+      96.0,
+      "1800"
+    ],
+    [
+      "DoS-UDP_Flood",
+      97.77777777777777,
+      "1800"
+    ],
+    [
+      "Mirai-udpplain",
+      96.5,
+      "1800"
+    ],
+    [
+      "Recon-PortScan",
+      83.77777777777777,
+      "1800"
+    ],
+    [
+      "SqlInjection",
+      89.33333333333333,
+      "1800"
+    ]
+  ],
+  "confusion_matrix": [
+    [
+      1596,
+      2,
+      2,
+      27,
+      2,
+      0,
+      0,
+      33,
+      138
+    ],
+    [
+      4,
+      1762,
+      0,
+      8,
+      0,
+      0,
+      1,
+      6,
+      19
+    ],
+    [
+      10,
+      0,
+      1675,
+      37,
+      0,
+      0,
+      0,
+      18,
+      60
+    ],
+    [
+      27,
+      4,
+      10,
+      1548,
+      2,
+      2,
+      1,
+      44,
+      162
+    ],
+    [
+      12,
+      0,
+      1,
+      18,
+      1728,
+      2,
+      1,
+      11,
+      27
+    ],
+    [
+      7,
+      0,
+      3,
+      13,
+      0,
+      1760,
+      0,
+      6,
+      11
+    ],
+    [
+      8,
+      0,
+      1,
+      20,
+      0,
+      0,
+      1737,
+      13,
+      21
+    ],
+    [
+      17,
+      1,
+      3,
+      71,
+      2,
+      2,
+      1,
+      1508,
+      195
+    ],
+    [
+      32,
+      3,
+      6,
+      66,
+      2,
+      2,
+      1,
+      80,
+      1608
+    ]
+  ],
+  "classification_report": {
+    "Benign_Final": {
+      "precision": 0.9316987740805605,
+      "recall": 0.8866666666666667,
+      "f1-score": 0.9086251067463706,
+      "support": 1800.0
+    },
+    "DDoS-HTTP_Flood": {
+      "precision": 0.9943566591422122,
+      "recall": 0.9788888888888889,
+      "f1-score": 0.986562150055991,
+      "support": 1800.0
+    },
+    "DDoS-SYN_Flood": {
+      "precision": 0.9847148736037625,
+      "recall": 0.9305555555555556,
+      "f1-score": 0.9568694658668951,
+      "support": 1800.0
+    },
+    "DictionaryBruteForce": {
+      "precision": 0.8561946902654868,
+      "recall": 0.86,
+      "f1-score": 0.8580931263858093,
+      "support": 1800.0
+    },
+    "DoS-TCP_Flood": {
+      "precision": 0.9953917050691244,
+      "recall": 0.96,
+      "f1-score": 0.9773755656108597,
+      "support": 1800.0
+    },
+    "DoS-UDP_Flood": {
+      "precision": 0.995475113122172,
+      "recall": 0.9777777777777777,
+      "f1-score": 0.9865470852017937,
+      "support": 1800.0
+    },
+    "Mirai-udpplain": {
+      "precision": 0.9971297359357061,
+      "recall": 0.965,
+      "f1-score": 0.9808018068887634,
+      "support": 1800.0
+    },
+    "Recon-PortScan": {
+      "precision": 0.8772542175683536,
+      "recall": 0.8377777777777777,
+      "f1-score": 0.8570616652458085,
+      "support": 1800.0
+    },
+    "SqlInjection": {
+      "precision": 0.7175368139223561,
+      "recall": 0.8933333333333333,
+      "f1-score": 0.7958426132145509,
+      "support": 1800.0
+    },
+    "accuracy": 0.9211111111111111,
+    "macro avg": {
+      "precision": 0.9277502869677482,
+      "recall": 0.921111111111111,
+      "f1-score": 0.9230865094685381,
+      "support": 16200.0
+    },
+    "weighted avg": {
+      "precision": 0.9277502869677482,
+      "recall": 0.9211111111111111,
+      "f1-score": 0.923086509468538,
+      "support": 16200.0
+    }
+  }
+}
