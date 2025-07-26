@@ -224,3 +224,9 @@ data/clean/features/*_features*.npy
 checkpoints
 
 payload-bytes
+
+# Large ViT experiment files
+notebooks/ViT-experiment/held_out_X.npy
+notebooks/ViT-experiment/held_out_y.npy
+notebooks/ViT-experiment/*.npy
+notebooks/ViT-experiment/**/*.npy

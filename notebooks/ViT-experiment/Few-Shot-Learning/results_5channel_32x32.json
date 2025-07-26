@@ -1,0 +1,40 @@
+{
+  "model_type": "5channel_32x32",
+  "test_accuracy": 100.0,
+  "test_loss": 0.0,
+  "num_classes": 1,
+  "num_parameters": 2916865,
+  "class_accuracies": [
+    [
+      "Data",
+      100.0,
+      "16200"
+    ]
+  ],
+  "confusion_matrix": [
+    [
+      16200
+    ]
+  ],
+  "classification_report": {
+    "Data": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 16200.0
+    },
+    "accuracy": 1.0,
+    "macro avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 16200.0
+    },
+    "weighted avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 16200.0
+    }
+  }
+}
