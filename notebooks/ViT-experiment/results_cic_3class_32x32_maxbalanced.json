@@ -1,0 +1,93 @@
+{
+  "model_type": "cic_3class_32x32_maxbalanced",
+  "test_accuracy": 94.89123269611075,
+  "test_loss": 0.13563953301820317,
+  "num_classes": 3,
+  "num_parameters": 2917251,
+  "sample_limit": 6742,
+  "total_samples": 20226,
+  "class_accuracies": [
+    [
+      "Active_Attack",
+      97.3293768545994,
+      "1011"
+    ],
+    [
+      "Normal",
+      89.9209486166008,
+      "1012"
+    ],
+    [
+      "Reconnaissance",
+      97.42828882294758,
+      "1011"
+    ]
+  ],
+  "confusion_matrix": [
+    [
+      984,
+      11,
+      16
+    ],
+    [
+      2,
+      910,
+      100
+    ],
+    [
+      2,
+      24,
+      985
+    ]
+  ],
+  "classification_report": {
+    "Active_Attack": {
+      "precision": 0.9959514170040485,
+      "recall": 0.973293768545994,
+      "f1-score": 0.9844922461230615,
+      "support": 1011.0
+    },
+    "Normal": {
+      "precision": 0.9629629629629629,
+      "recall": 0.8992094861660079,
+      "f1-score": 0.9299948901379663,
+      "support": 1012.0
+    },
+    "Reconnaissance": {
+      "precision": 0.8946412352406903,
+      "recall": 0.9742828882294757,
+      "f1-score": 0.9327651515151515,
+      "support": 1011.0
+    },
+    "accuracy": 0.9489123269611075,
+    "macro avg": {
+      "precision": 0.9511852050692339,
+      "recall": 0.9489287143138259,
+      "f1-score": 0.9490840959253931,
+      "support": 3034.0
+    },
+    "weighted avg": {
+      "precision": 0.9511890869933914,
+      "recall": 0.9489123269611075,
+      "f1-score": 0.9490778041634329,
+      "support": 3034.0
+    }
+  },
+  "class_mapping": {
+    "Normal": [
+      "Benign_Final"
+    ],
+    "Reconnaissance": [
+      "Recon-PortScan",
+      "DictionaryBruteForce"
+    ],
+    "Active_Attack": [
+      "DDoS-HTTP_Flood",
+      "DDoS-SYN_Flood",
+      "DoS-TCP_Flood",
+      "DoS-UDP_Flood",
+      "Mirai-udpplain",
+      "SqlInjection"
+    ]
+  }
+}

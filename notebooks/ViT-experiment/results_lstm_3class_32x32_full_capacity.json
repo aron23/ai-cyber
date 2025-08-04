@@ -1,0 +1,39 @@
+{
+  "experiment": "LSTM_CIC_3class_full_capacity",
+  "timestamp": "2025-08-04T07:26:25.896736",
+  "dataset": "CIC-IoT23",
+  "approach": "3-class semantic grouping",
+  "architecture": "LSTM_Sequential",
+  "total_samples": 36000,
+  "samples_per_class": 12000,
+  "test_accuracy": 0.9615277777777778,
+  "validation_accuracy": 0.9636111111111111,
+  "training_epochs": 50,
+  "training_time": "0:16:21.743299",
+  "parameters": 355331,
+  "sequence_config": {
+    "sequence_length": 32,
+    "input_features": 160,
+    "hidden_size": 128,
+    "num_layers": 2
+  },
+  "multi_architecture_comparison": {
+    "vit_baseline": 0.9694,
+    "cnn_baseline": 0.93,
+    "lstm_performance": 0.9615277777777778,
+    "lstm_vs_vit_diff": -0.00787222222222228,
+    "lstm_vs_cnn_diff": 0.03152777777777771
+  },
+  "confidence_analysis": {
+    "mean_confidence": 0.9773578643798828,
+    "high_confidence_samples": 6738,
+    "low_confidence_samples": 241
+  },
+  "performance_tier": "\ud83e\udd48 EXCELLENT",
+  "classification_report": "                precision    recall  f1-score   support\n\n Active_Attack     0.9962    0.9733    0.9846      2400\n        Normal     0.9627    0.9363    0.9493      2400\nReconnaissance     0.9282    0.9750    0.9510      2400\n\n      accuracy                         0.9615      7200\n     macro avg     0.9624    0.9615    0.9616      7200\n  weighted avg     0.9624    0.9615    0.9616      7200\n",
+  "class_names": [
+    "Active_Attack",
+    "Normal",
+    "Reconnaissance"
+  ]
+}

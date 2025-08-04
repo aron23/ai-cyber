@@ -1,0 +1,60 @@
+{
+  "timestamp": "2025-08-03T23:42:42.430773",
+  "experiment": "cross_dataset_validation_cic_to_unsw",
+  "training_dataset": "CIC-IoT23",
+  "training_accuracy": 96.94,
+  "testing_dataset": "UNSW-NB15",
+  "semantic_classes": [
+    "Active_Attack",
+    "Normal",
+    "Reconnaissance"
+  ],
+  "test_samples": 6000,
+  "overall_accuracy": 0.24833333333333332,
+  "performance_drop_percentage_points": 72.10666666666667,
+  "per_class_accuracy": {
+    "Active_Attack": 0.134,
+    "Normal": 0.4705,
+    "Reconnaissance": 0.1405
+  },
+  "classification_report": {
+    "Active_Attack": {
+      "precision": 0.34491634491634493,
+      "recall": 0.134,
+      "f1-score": 0.19301404393230104,
+      "support": 2000.0
+    },
+    "Normal": {
+      "precision": 0.24953593211349775,
+      "recall": 0.4705,
+      "f1-score": 0.32611332524692427,
+      "support": 2000.0
+    },
+    "Reconnaissance": {
+      "precision": 0.19352617079889808,
+      "recall": 0.1405,
+      "f1-score": 0.16280417149478563,
+      "support": 2000.0
+    },
+    "accuracy": 0.24833333333333332,
+    "macro avg": {
+      "precision": 0.2626594826095803,
+      "recall": 0.24833333333333338,
+      "f1-score": 0.22731051355800366,
+      "support": 6000.0
+    },
+    "weighted avg": {
+      "precision": 0.2626594826095802,
+      "recall": 0.24833333333333332,
+      "f1-score": 0.22731051355800364,
+      "support": 6000.0
+    }
+  },
+  "confidence_stats": {
+    "mean": 0.8996943235397339,
+    "std": 0.15100060403347015,
+    "high_confidence_samples": 4722,
+    "high_confidence_accuracy": 0.23083439220669208
+  },
+  "generalization_assessment": "Poor"
+}

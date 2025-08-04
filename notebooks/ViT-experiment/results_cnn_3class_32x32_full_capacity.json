@@ -1,0 +1,27 @@
+{
+  "experiment": "CNN_CIC_3class_full_capacity",
+  "timestamp": "2025-08-04T02:08:14.888353",
+  "dataset": "CIC-IoT23",
+  "approach": "3-class semantic grouping",
+  "architecture": "CNN",
+  "total_samples": 36000,
+  "samples_per_class": 12000,
+  "test_accuracy": 0.9729166666666667,
+  "validation_accuracy": 0.9755555555555555,
+  "training_epochs": 36,
+  "training_time": "1:53:36.238321",
+  "parameters": 4822467,
+  "comparison": {
+    "vit_baseline": 0.9694,
+    "cnn_performance": 0.9729166666666667,
+    "difference": 0.0035166666666666124,
+    "relative_performance": 1.0036276734750016
+  },
+  "performance_tier": "\ud83e\udd47 WORLD-CLASS",
+  "classification_report": "                precision    recall  f1-score   support\n\n Active_Attack     0.9970    0.9854    0.9912      2400\n        Normal     0.9625    0.9637    0.9631      2400\nReconnaissance     0.9596    0.9696    0.9646      2400\n\n      accuracy                         0.9729      7200\n     macro avg     0.9731    0.9729    0.9730      7200\n  weighted avg     0.9731    0.9729    0.9730      7200\n",
+  "class_names": [
+    "Active_Attack",
+    "Normal",
+    "Reconnaissance"
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "model_type": "unsw_6class_32x32_balanced",
+  "test_accuracy": 32.08888888888889,
+  "test_loss": 1.5348288358097346,
+  "num_classes": 6,
+  "num_parameters": 2917830,
+  "sample_limit": 2500,
+  "total_samples": 15000,
+  "class_accuracies": [
+    [
+      "DoS",
+      34.13333333333333,
+      "375"
+    ],
+    [
+      "Exploits",
+      16.53333333333333,
+      "375"
+    ],
+    [
+      "Fuzzers",
+      22.400000000000002,
+      "375"
+    ],
+    [
+      "Generic",
+      40.0,
+      "375"
+    ],
+    [
+      "Normal",
+      71.73333333333333,
+      "375"
+    ],
+    [
+      "Reconnaissance",
+      7.733333333333333,
+      "375"
+    ]
+  ],
+  "confusion_matrix": [
+    [
+      128,
+      27,
+      86,
+      55,
+      48,
+      31
+    ],
+    [
+      20,
+      62,
+      47,
+      96,
+      137,
+      13
+    ],
+    [
+      97,
+      36,
+      84,
+      57,
+      88,
+      13
+    ],
+    [
+      12,
+      15,
+      6,
+      150,
+      186,
+      6
+    ],
+    [
+      3,
+      3,
+      6,
+      84,
+      269,
+      10
+    ],
+    [
+      139,
+      30,
+      80,
+      55,
+      42,
+      29
+    ]
+  ],
+  "classification_report": {
+    "DoS": {
+      "precision": 0.3208020050125313,
+      "recall": 0.3413333333333333,
+      "f1-score": 0.330749354005168,
+      "support": 375.0
+    },
+    "Exploits": {
+      "precision": 0.3583815028901734,
+      "recall": 0.16533333333333333,
+      "f1-score": 0.22627737226277372,
+      "support": 375.0
+    },
+    "Fuzzers": {
+      "precision": 0.27184466019417475,
+      "recall": 0.224,
+      "f1-score": 0.24561403508771928,
+      "support": 375.0
+    },
+    "Generic": {
+      "precision": 0.30181086519114686,
+      "recall": 0.4,
+      "f1-score": 0.3440366972477064,
+      "support": 375.0
+    },
+    "Normal": {
+      "precision": 0.34935064935064936,
+      "recall": 0.7173333333333334,
+      "f1-score": 0.4698689956331878,
+      "support": 375.0
+    },
+    "Reconnaissance": {
+      "precision": 0.28431372549019607,
+      "recall": 0.07733333333333334,
+      "f1-score": 0.12159329140461216,
+      "support": 375.0
+    },
+    "accuracy": 0.3208888888888889,
+    "macro avg": {
+      "precision": 0.3144172346881453,
+      "recall": 0.32088888888888883,
+      "f1-score": 0.2896899576068612,
+      "support": 2250.0
+    },
+    "weighted avg": {
+      "precision": 0.3144172346881453,
+      "recall": 0.3208888888888889,
+      "f1-score": 0.2896899576068612,
+      "support": 2250.0
+    }
+  },
+  "classes": [
+    "Normal",
+    "DoS",
+    "Exploits",
+    "Generic",
+    "Fuzzers",
+    "Reconnaissance"
+  ]
+}

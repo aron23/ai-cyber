@@ -1,0 +1,150 @@
+{
+  "model_type": "cic_6class_32x32_balanced",
+  "test_accuracy": 89.68888888888888,
+  "test_loss": 0.2822753714896004,
+  "num_classes": 6,
+  "num_parameters": 2917830,
+  "sample_limit": 2500,
+  "total_samples": 15000,
+  "class_accuracies": [
+    [
+      "Benign_Final",
+      87.2,
+      "375"
+    ],
+    [
+      "DDoS-HTTP_Flood",
+      95.73333333333333,
+      "375"
+    ],
+    [
+      "DDoS-SYN_Flood",
+      89.06666666666668,
+      "375"
+    ],
+    [
+      "DoS-TCP_Flood",
+      88.53333333333333,
+      "375"
+    ],
+    [
+      "DoS-UDP_Flood",
+      86.13333333333333,
+      "375"
+    ],
+    [
+      "Mirai-udpplain",
+      91.46666666666667,
+      "375"
+    ]
+  ],
+  "confusion_matrix": [
+    [
+      327,
+      5,
+      33,
+      3,
+      4,
+      3
+    ],
+    [
+      12,
+      359,
+      3,
+      1,
+      0,
+      0
+    ],
+    [
+      25,
+      1,
+      334,
+      8,
+      6,
+      1
+    ],
+    [
+      6,
+      0,
+      27,
+      332,
+      4,
+      6
+    ],
+    [
+      19,
+      1,
+      19,
+      9,
+      323,
+      4
+    ],
+    [
+      15,
+      1,
+      13,
+      2,
+      1,
+      343
+    ]
+  ],
+  "classification_report": {
+    "Benign_Final": {
+      "precision": 0.8094059405940595,
+      "recall": 0.872,
+      "f1-score": 0.8395378690629012,
+      "support": 375.0
+    },
+    "DDoS-HTTP_Flood": {
+      "precision": 0.9782016348773842,
+      "recall": 0.9573333333333334,
+      "f1-score": 0.967654986522911,
+      "support": 375.0
+    },
+    "DDoS-SYN_Flood": {
+      "precision": 0.7785547785547785,
+      "recall": 0.8906666666666667,
+      "f1-score": 0.8308457711442786,
+      "support": 375.0
+    },
+    "DoS-TCP_Flood": {
+      "precision": 0.9352112676056338,
+      "recall": 0.8853333333333333,
+      "f1-score": 0.9095890410958904,
+      "support": 375.0
+    },
+    "DoS-UDP_Flood": {
+      "precision": 0.9556213017751479,
+      "recall": 0.8613333333333333,
+      "f1-score": 0.906030855539972,
+      "support": 375.0
+    },
+    "Mirai-udpplain": {
+      "precision": 0.9607843137254902,
+      "recall": 0.9146666666666666,
+      "f1-score": 0.9371584699453552,
+      "support": 375.0
+    },
+    "accuracy": 0.8968888888888888,
+    "macro avg": {
+      "precision": 0.902963206188749,
+      "recall": 0.8968888888888888,
+      "f1-score": 0.898469498885218,
+      "support": 2250.0
+    },
+    "weighted avg": {
+      "precision": 0.9029632061887491,
+      "recall": 0.8968888888888888,
+      "f1-score": 0.8984694988852181,
+      "support": 2250.0
+    }
+  },
+  "classes": [
+    "Benign_Final",
+    "DDoS-HTTP_Flood",
+    "DDoS-SYN_Flood",
+    "DoS-TCP_Flood",
+    "DoS-UDP_Flood",
+    "Mirai-udpplain"
+  ]
+}

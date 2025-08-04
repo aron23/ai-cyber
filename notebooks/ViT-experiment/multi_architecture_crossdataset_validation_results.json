@@ -1,0 +1,165 @@
+{
+  "experiment": "Multi_Architecture_CrossDataset_Validation",
+  "timestamp": "2025-08-04T07:40:42.819057",
+  "source_dataset": "CIC-IoT23",
+  "target_dataset": "UNSW-NB15",
+  "class_mapping": {
+    "Normal": [
+      "Normal"
+    ],
+    "Reconnaissance": [
+      "Analysis",
+      "Reconnaissance",
+      "Fuzzers"
+    ],
+    "Active_Attack": [
+      "DoS",
+      "Exploits",
+      "Shellcode",
+      "Backdoor",
+      "Worms",
+      "Generic"
+    ]
+  },
+  "cic_baselines": {
+    "ViT": 0.9694,
+    "CNN": 0.9729,
+    "LSTM": 0.9615
+  },
+  "unsw_results": {
+    "ViT": {
+      "accuracy": 0.2979049565661727,
+      "mean_confidence": 0.9168848991394043,
+      "high_confidence_accuracy": 0.291798821930222,
+      "high_confidence_samples": 4414,
+      "domain_gap_percentage_points": 67.14950434338274,
+      "performance_retention_percent": 30.73085997175291,
+      "classification_report": {
+        "Active_Attack": {
+          "precision": 0.30120481927710846,
+          "recall": 0.1375,
+          "f1-score": 0.18880878819086852,
+          "support": 2000.0
+        },
+        "Normal": {
+          "precision": 0.3061375400542273,
+          "recall": 0.6638161411010155,
+          "f1-score": 0.4190283400809717,
+          "support": 1871.0
+        },
+        "Reconnaissance": {
+          "precision": 0.25749167591564925,
+          "recall": 0.116,
+          "f1-score": 0.1599448466046191,
+          "support": 2000.0
+        },
+        "accuracy": 0.2979049565661727,
+        "macro avg": {
+          "precision": 0.288278011748995,
+          "recall": 0.30577204703367183,
+          "f1-score": 0.2559273249588198,
+          "support": 5871.0
+        },
+        "weighted avg": {
+          "precision": 0.2878855949287983,
+          "recall": 0.2979049565661727,
+          "f1-score": 0.25234360311403053,
+          "support": 5871.0
+        }
+      }
+    },
+    "CNN": {
+      "accuracy": 0.313915857605178,
+      "mean_confidence": 0.9384424686431885,
+      "high_confidence_accuracy": 0.3108221476510067,
+      "high_confidence_samples": 4768,
+      "domain_gap_percentage_points": 65.8984142394822,
+      "performance_retention_percent": 32.26599420343077,
+      "classification_report": {
+        "Active_Attack": {
+          "precision": 0.3627450980392157,
+          "recall": 0.0555,
+          "f1-score": 0.09627059843885516,
+          "support": 2000.0
+        },
+        "Normal": {
+          "precision": 0.31141599792907065,
+          "recall": 0.6429716729021914,
+          "f1-score": 0.41960237181723054,
+          "support": 1871.0
+        },
+        "Reconnaissance": {
+          "precision": 0.3108108108108108,
+          "recall": 0.2645,
+          "f1-score": 0.2857914640734738,
+          "support": 2000.0
+        },
+        "accuracy": 0.313915857605178,
+        "macro avg": {
+          "precision": 0.32832396892636573,
+          "recall": 0.32099055763406376,
+          "f1-score": 0.26722147810985314,
+          "support": 5871.0
+        },
+        "weighted avg": {
+          "precision": 0.32869547774235125,
+          "recall": 0.313915857605178,
+          "f1-score": 0.26387330313314533,
+          "support": 5871.0
+        }
+      }
+    },
+    "LSTM": {
+      "accuracy": 0.29483903934593764,
+      "mean_confidence": 0.9578944444656372,
+      "high_confidence_accuracy": 0.2898635477582846,
+      "high_confidence_samples": 5130,
+      "domain_gap_percentage_points": 66.66609606540624,
+      "performance_retention_percent": 30.66448667144437,
+      "classification_report": {
+        "Active_Attack": {
+          "precision": 0.3476923076923077,
+          "recall": 0.113,
+          "f1-score": 0.17056603773584905,
+          "support": 2000.0
+        },
+        "Normal": {
+          "precision": 0.29523278505715084,
+          "recall": 0.5660074826296099,
+          "f1-score": 0.38805423231953096,
+          "support": 1871.0
+        },
+        "Reconnaissance": {
+          "precision": 0.2729498164014688,
+          "recall": 0.223,
+          "f1-score": 0.24545954870665934,
+          "support": 2000.0
+        },
+        "accuracy": 0.29483903934593764,
+        "macro avg": {
+          "precision": 0.30529163638364243,
+          "recall": 0.3006691608765366,
+          "f1-score": 0.2680266062540131,
+          "support": 5871.0
+        },
+        "weighted avg": {
+          "precision": 0.30551265355637575,
+          "recall": 0.29483903934593764,
+          "f1-score": 0.26538931043346264,
+          "support": 5871.0
+        }
+      }
+    }
+  },
+  "analysis_summary": {
+    "best_transfer_architecture": "CNN",
+    "best_transfer_accuracy": 0.313915857605178,
+    "worst_transfer_architecture": "LSTM",
+    "worst_transfer_accuracy": 0.29483903934593764,
+    "architecture_gap_percentage_points": 1.9076818259240347,
+    "average_retention_percent": 31.220446948876017,
+    "domain_shift_severity": "MODERATE",
+    "total_architectures_tested": 3,
+    "unsw_samples_tested": 5871
+  }
+}
